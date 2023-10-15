@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Actitvity.FoodCategory">
+    tools:context=".Actitvity.FoodCategoryActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="food category"
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="304dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

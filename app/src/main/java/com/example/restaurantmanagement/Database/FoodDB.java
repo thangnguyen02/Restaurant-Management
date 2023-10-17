@@ -1,4 +1,4 @@
 package com.example.restaurantmanagement.Database;
 
-public class FoodDB {
+public abstract class FoodDB {
 }

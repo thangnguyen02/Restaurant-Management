@@ -14,4 +14,7 @@ public class TableOrder {
     int floor;
     @ColumnInfo(name = "number")
     int number;
+
+    public TableOrder(String name, int i, int i1) {
+    }
 }

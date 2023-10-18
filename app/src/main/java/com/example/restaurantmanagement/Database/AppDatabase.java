@@ -16,11 +16,11 @@ import org.w3c.dom.CDATASection;
 @Database(entities = {TableOrder.class, TableOrderCustomer.class, FoodTable.class, ComboTable.class},version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase database;
-    private static String DATABASE_NAME;
+    private static String DATABASE_NAME="restaurantmanagement";
 
     public synchronized static AppDatabase getInstance(Context context) {
         if (database == null) {
-            AppDatabase database = Room.databaseBuilder(context.getApplicationContext(),
+             database = Room.databaseBuilder(context.getApplicationContext(),
                     AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().fallbackToDestructiveMigration().build();
 
         }

@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.restaurantmanagement.Adapters.FoodCategoryAdapter;
-import com.example.restaurantmanagement.Database.FoodCategoryDB;
+import com.example.restaurantmanagement.Database.AppDatabase;
 import com.example.restaurantmanagement.Models.FoodCategory;
 import com.example.restaurantmanagement.R;
 
@@ -41,7 +41,7 @@ public class FoodCategoryActivity extends AppCompatActivity implements  FoodCate
         foodCategoryList = new ArrayList<>();
         foodCategoryAdapter.setData(foodCategoryList);
 
-        foodCategoryList = FoodCategoryDB.getInstance(this).foodCategoryDAO().getListFoodCategory();
+        foodCategoryList = AppDatabase.getInstance(this).foodCategoryDAO().getListFoodCategory();
         foodCategoryAdapter.setData(foodCategoryList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(foodCategoryAdapter);
@@ -65,12 +65,12 @@ public class FoodCategoryActivity extends AppCompatActivity implements  FoodCate
         }
         FoodCategory foodCategory = new FoodCategory(name, description);
         System.out.println(name);
-        FoodCategoryDB.getInstance(this).foodCategoryDAO().insertFoodCategory(foodCategory);
+        AppDatabase.getInstance(this).foodCategoryDAO().insertFoodCategory(foodCategory);
         Toast.makeText(this, "Add oke", Toast.LENGTH_SHORT).show();
         txtName.setText("");
         txtDescription.setText("");
         hideSoftKeyboard(this);
-        foodCategoryList = FoodCategoryDB.getInstance(this).foodCategoryDAO().getListFoodCategory();
+        foodCategoryList = AppDatabase.getInstance(this).foodCategoryDAO().getListFoodCategory();
         foodCategoryAdapter.setData(foodCategoryList);
 
     }

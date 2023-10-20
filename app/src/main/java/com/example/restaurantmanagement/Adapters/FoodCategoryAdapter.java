@@ -45,8 +45,8 @@ public class FoodCategoryAdapter extends RecyclerView.Adapter<FoodCategoryAdapte
         if (foodCategory == null) {
             return;
         }
-        holder.txtName.setText(foodCategory.getName());
-        holder.txtDescription.setText(foodCategory.getDescription());
+        holder.txtName.setText("Name: "+foodCategory.getName());
+        holder.txtDescription.setText("Description: "+foodCategory.getDescription());
     }
 
     @Override

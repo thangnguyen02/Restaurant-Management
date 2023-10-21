@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "tableOrder")
 public class TableOrder {
     @PrimaryKey(autoGenerate = true)
-    int ID;
+    int ID=0;
     @ColumnInfo(name = "description")
     String description;
     @ColumnInfo(name = "floor")
@@ -15,6 +15,5 @@ public class TableOrder {
     @ColumnInfo(name = "number")
     int number;
 
-    public TableOrder(String name, int i, int i1) {
-    }
+
 }

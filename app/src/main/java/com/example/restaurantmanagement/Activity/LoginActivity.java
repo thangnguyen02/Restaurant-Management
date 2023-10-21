@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.example.restaurantmanagement.Database.UserDao;
 import com.example.restaurantmanagement.Database.UserDatabase;
-import com.example.restaurantmanagement.MainActivity;
 import com.example.restaurantmanagement.Models.UserEntity;
 import com.example.restaurantmanagement.R;
 

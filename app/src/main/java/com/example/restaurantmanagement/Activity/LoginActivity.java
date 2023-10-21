@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         linkToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
 
@@ -87,8 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.putString("userName", userIdText);
                                 editor.apply();
 
-                                startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class)
-                                        .putExtra("fullName", userEntity.fullName));
+                                startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));
                                 finish();
                             }
                         }

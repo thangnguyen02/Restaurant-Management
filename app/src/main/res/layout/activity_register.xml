@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context=".Activity.RegisterActivity">
 
     <TextView
@@ -88,6 +89,19 @@
         android:id="@+id/register"
         android:layout_below="@+id/phone"
         android:layout_marginTop="20dp"
-        android:text="Register Here "/>
+        android:text="Register "/>
+
+    <TextView
+        android:id="@+id/linkToLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Already have an account? click here"
+        android:textColor="#000"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/register"
+        android:textSize="20dp" />
+
 
 </RelativeLayout>

@@ -5,4 +5,9 @@
     <color name="blue">#09B18B</color>
     <color name="gray">#454948</color>
     <color name="green">#03983F</color>
-</resources>
+    <color name="yellow">#FFF222</color>
+    <color name="grey1">#99AAAB</color>
+    <color name="red">#FF362E</color>
+    <color name="grey2">#2C3335</color>
+    <color name="pink">#EA7773</color>
+    </resources>

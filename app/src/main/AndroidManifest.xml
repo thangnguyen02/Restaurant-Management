@@ -15,14 +15,19 @@
         android:theme="@style/Theme.RestaurantManagement"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.OrderListActivity"
+            android:theme="@style/Theme.RestaurantManagement"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.AddOrder"
+            android:theme="@style/Theme.RestaurantManagement"
+            android:exported="false" />
+
+        <activity
             android:name=".Activity.SplashScreen"
             android:theme="@style/Theme.RestaurantManagement"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Activity.ResetPasswordActivity"
@@ -32,21 +37,24 @@
             android:exported="false" />
         <activity
             android:name=".Activity.LoginActivity"
-            android:exported="true">
-
+            android:exported="false">
         </activity>
         <activity
             android:name=".Activity.RegisterActivity"
-            android:exported="true"></activity>
+            android:exported="false"></activity>
         <activity
             android:name=".Activity.FoodCategoryActivity"
-            android:exported="true"></activity>
-        <activity
-            android:name=".Activity.FoodActivity"
-            android:exported="true"></activity>
+            android:exported="false"></activity>
+
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

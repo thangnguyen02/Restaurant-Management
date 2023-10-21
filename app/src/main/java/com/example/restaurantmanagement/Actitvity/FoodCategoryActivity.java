@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -22,7 +23,7 @@ import com.example.restaurantmanagement.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FoodCategoryActivity extends AppCompatActivity implements  FoodCategoryAdapter.OnItemClickListener{
+public class FoodCategoryActivity extends AppCompatActivity implements FoodCategoryAdapter.OnItemClickListener {
 
     EditText txtName;
     EditText txtDescription;
@@ -31,6 +32,9 @@ public class FoodCategoryActivity extends AppCompatActivity implements  FoodCate
     FoodCategoryAdapter foodCategoryAdapter;
 
     List<FoodCategory> foodCategoryList;
+
+    Button btnUpdate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +57,29 @@ public class FoodCategoryActivity extends AppCompatActivity implements  FoodCate
                 addFoodCategory();
             }
         });
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateFoodCategory();
+            }
+        });
 
+    }
 
+    private void updateFoodCategory() {
+        FoodCategory foodCategory = new FoodCategory();
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        foodCategory.setId(sharedPreferences.getLong("id", 0));
+        foodCategory.setName(txtName.getText().toString());
+        foodCategory.setDescription(txtDescription.getText().toString());
+        AppDatabase.getInstance(this).foodCategoryDAO().updateFoodCategory(foodCategory);
+        reload();
+    }
+
+    public void reload() {
+        hideSoftKeyboard(this);
+        foodCategoryList = AppDatabase.getInstance(this).foodCategoryDAO().getListFoodCategory();
+        foodCategoryAdapter.setData(foodCategoryList);
     }
 
     private void addFoodCategory() {
@@ -69,9 +94,7 @@ public class FoodCategoryActivity extends AppCompatActivity implements  FoodCate
         Toast.makeText(this, "Add oke", Toast.LENGTH_SHORT).show();
         txtName.setText("");
         txtDescription.setText("");
-        hideSoftKeyboard(this);
-        foodCategoryList = AppDatabase.getInstance(this).foodCategoryDAO().getListFoodCategory();
-        foodCategoryAdapter.setData(foodCategoryList);
+        reload();
 
     }
 
@@ -79,6 +102,7 @@ public class FoodCategoryActivity extends AppCompatActivity implements  FoodCate
         txtName = findViewById(R.id.txtName);
         txtDescription = findViewById(R.id.txtDescription);
         btnAdd = findViewById(R.id.btnAdd);
+        btnUpdate = findViewById(R.id.btnUpdate);
         recyclerView = findViewById(R.id.rcViewFoodCategory);
     }
 
@@ -92,7 +116,18 @@ public class FoodCategoryActivity extends AppCompatActivity implements  FoodCate
 
     @Override
     public void onItemClick(FoodCategory foodCategory) {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putLong("id", foodCategory.getId());
+        editor.apply();
         txtName.setText(foodCategory.getName());
         txtDescription.setText(foodCategory.getDescription());
+    }
+
+    @Override
+    public void OnDeleteItemClickListener(FoodCategory clickedCategory) {
+        AppDatabase.getInstance(this).foodCategoryDAO().deleteFoodCategory(clickedCategory);
+        Toast.makeText(this, "Delete successful", Toast.LENGTH_SHORT).show();
+        reload();
     }
 }

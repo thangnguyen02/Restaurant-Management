@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,7 +27,10 @@ public class FoodCategoryAdapter extends RecyclerView.Adapter<FoodCategoryAdapte
 
     public interface OnItemClickListener {
         void onItemClick(FoodCategory foodCategory);
+
+        void OnDeleteItemClickListener(FoodCategory clickedCategory);
     }
+
     public void setData(List<FoodCategory> list) {
         this.foodCategoryList = list;
         notifyDataSetChanged();
@@ -59,11 +63,26 @@ public class FoodCategoryAdapter extends RecyclerView.Adapter<FoodCategoryAdapte
     public class FoodCategoryViewHolder extends RecyclerView.ViewHolder {
         private TextView txtName;
         private TextView txtDescription;
+        private Button buttonDelete;
 
         public FoodCategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             txtName = itemView.findViewById(R.id.itemTxtName);
             txtDescription = itemView.findViewById(R.id.itemTxtDescription);
+            buttonDelete = itemView.findViewById(R.id.deleteButton);
+
+            buttonDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        FoodCategory clickedCategory = foodCategoryList.get(position);
+                        if (listener != null) {
+                            listener.OnDeleteItemClickListener(clickedCategory);
+                        }
+                    }
+                }
+            });
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

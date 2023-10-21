@@ -17,6 +17,10 @@ public class FoodCategory {
         this.description = description;
     }
 
+    public FoodCategory() {
+
+    }
+
     public Long getId() {
         return id;
     }

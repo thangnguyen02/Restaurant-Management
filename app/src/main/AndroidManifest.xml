@@ -13,9 +13,17 @@
         android:theme="@style/Theme.RestaurantManagement"
         tools:targetApi="31">
         <activity
+            android:name=".Actitvity.AddCombo"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Actitvity.ComboListActivity"
-            android:exported="false" />
-        <!-- <activity -->
+            android:exported="false" /> <!-- <activity -->
         <!-- android:name=".item_food_category" -->
         <!-- android:exported="false" /> -->
         <activity

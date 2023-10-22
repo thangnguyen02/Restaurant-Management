@@ -20,11 +20,11 @@ public interface ComboDAO {
     Combo GetComboById(int id);
 
     @Insert
-    Combo InsertCombos(Combo... combos);
+    void insertCombos(Combo... combos);
 
     @Delete
-    Combo DeleteCombos(Combo...combos);
+    void deleteCombos(Combo...combos);
 
     @Update
-    Combo UpdateCombos(Combo...combos);
+    void updateCombos(Combo...combos);
 }

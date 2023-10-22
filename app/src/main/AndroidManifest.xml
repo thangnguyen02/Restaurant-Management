@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    
-    <uses-permission-sdk-23 android:name="android.permission.INTERNET"/>
+
+    <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -15,18 +15,20 @@
         android:theme="@style/Theme.RestaurantManagement"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.OrderListActivity"
-            android:theme="@style/Theme.RestaurantManagement"
+            android:name=".Activity.SlideActivity"
             android:exported="false" />
+        <activity
+            android:name=".Activity.OrderListActivity"
+            android:exported="false"
+            android:theme="@style/Theme.RestaurantManagement" />
         <activity
             android:name=".Activity.AddOrder"
-            android:theme="@style/Theme.RestaurantManagement"
-            android:exported="false" />
-
+            android:exported="false"
+            android:theme="@style/Theme.RestaurantManagement" />
         <activity
             android:name=".Activity.SplashScreen"
-            android:theme="@style/Theme.RestaurantManagement"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.RestaurantManagement">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,20 +43,16 @@
             android:exported="false" />
         <activity
             android:name=".Activity.LoginActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".Activity.RegisterActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".Activity.FoodCategoryActivity"
-            android:exported="false"></activity>
-
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.putString("userName", userIdText);
                                 editor.apply();
 
-                                startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));
+                                startActivity(new Intent(LoginActivity.this, SlideActivity.class));
                                 finish();
                             }
                         }

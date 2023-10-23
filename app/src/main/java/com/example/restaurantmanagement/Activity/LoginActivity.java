@@ -20,6 +20,8 @@ import com.example.restaurantmanagement.Database.UserDatabase;
 import com.example.restaurantmanagement.Models.UserEntity;
 import com.example.restaurantmanagement.R;
 
+import io.github.muddz.styleabletoast.StyleableToast;
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText userId, password;
@@ -75,7 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
+                                        StyleableToast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_LONG, R.style.toast_error).show();
                                     }
                                 });
                             } else {

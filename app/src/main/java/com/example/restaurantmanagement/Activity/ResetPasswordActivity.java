@@ -15,6 +15,8 @@ import com.example.restaurantmanagement.Database.UserDao;
 import com.example.restaurantmanagement.Database.UserDatabase;
 import com.example.restaurantmanagement.R;
 
+import io.github.muddz.styleabletoast.StyleableToast;
+
 public class ResetPasswordActivity extends AppCompatActivity {
 
     EditText userId, email, newPassword, confirmPassword;
@@ -47,29 +49,28 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 String newPass = newPassword.getText().toString();
                 String confirmPass = confirmPassword.getText().toString();
 
-                // Kiểm tra xác nhận mật khẩu
                 if (!newPass.equals(confirmPass)) {
-                    Toast.makeText(ResetPasswordActivity.this, "Password doesn't match confirmation", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ResetPasswordActivity.this, "Password doesn't match confirmation", Toast.LENGTH_SHORT).show();
+                    StyleableToast.makeText(getApplicationContext(), "Password doesn't match confirmation", Toast.LENGTH_LONG, R.style.toast_error).show();
+
                     return;
                 }
 
-                // Thực hiện cập nhật mật khẩu trong cơ sở dữ liệu
                 UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
                 final UserDao userDao = userDatabase.userDao();
 
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        // Kiểm tra xem địa chỉ email đã tồn tại trong cơ sở dữ liệu hay chưa.
                         int emailExists = userDao.checkEmailExists(userEmail);
 
                         if (emailExists > 0) {
-                            // Địa chỉ email đã tồn tại, tiến hành cập nhật mật khẩu.
                             userDao.updatePassword(userEmail, newPass);
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(ResetPasswordActivity.this, "Password updated successfully", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(ResetPasswordActivity.this, "Password updated successfully", Toast.LENGTH_SHORT).show();
+                                    StyleableToast.makeText(getApplicationContext(), "Password updated successfully", Toast.LENGTH_LONG, R.style.toast_successfully).show();
                                     startActivity(new Intent(ResetPasswordActivity.this, LoginActivity.class));
                                 }
                             });
@@ -77,7 +78,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(ResetPasswordActivity.this, "Email not registered", Toast.LENGTH_SHORT).show();
+                                    StyleableToast.makeText(getApplicationContext(), "Email not registered", Toast.LENGTH_LONG, R.style.toast_error).show();
+//                                    Toast.makeText(ResetPasswordActivity.this, "Email not registered", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }

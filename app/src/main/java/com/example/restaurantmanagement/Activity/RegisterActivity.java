@@ -15,6 +15,8 @@ import com.example.restaurantmanagement.Database.UserDatabase;
 import com.example.restaurantmanagement.Models.UserEntity;
 import com.example.restaurantmanagement.R;
 
+import io.github.muddz.styleabletoast.StyleableToast;
+
 public class RegisterActivity extends AppCompatActivity {
 
     EditText userId, email, password, fullName, phone;
@@ -68,10 +70,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     if (emailExists > 0) {
-                                        // Địa chỉ email đã tồn tại, hiển thị thông báo lỗi.
-                                        Toast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_SHORT).show();
+                                        StyleableToast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_LONG, R.style.toast_error).show();
+//                                        Toast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        // Địa chỉ email chưa tồn tại, tiến hành đăng ký người dùng.
                                         new Thread(new Runnable() {
                                             @Override
                                             public void run() {
@@ -79,7 +80,8 @@ public class RegisterActivity extends AppCompatActivity {
                                                 runOnUiThread(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        Toast.makeText(getApplicationContext(), "User registered", Toast.LENGTH_SHORT).show();
+                                                        StyleableToast.makeText(getApplicationContext(), "User registered", Toast.LENGTH_LONG, R.style.toast_error).show();
+//                                                        Toast.makeText(getApplicationContext(), "User registered", Toast.LENGTH_SHORT).show();
                                                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                                     }
                                                 });
@@ -91,7 +93,8 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }).start();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
+                    StyleableToast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_LONG, R.style.toast_error).show();
+//                    Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -65,7 +65,8 @@ public class LoginActivity extends AppCompatActivity {
                 final String userIdText = userId.getText().toString();
                 final String passwordText = password.getText().toString();
                 if (userIdText.isEmpty() || passwordText.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
+                    StyleableToast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_LONG, R.style.toast_error).show();
+//                    Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
                 } else {
                     UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
                     final UserDao userDao = userDatabase.userDao();

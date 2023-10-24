@@ -26,19 +26,21 @@
 
     <style name="toast_error">
         <item name="stTextBold">true</item>
-        <item name="stTextColor">#930202</item>
-        <item name="stColorBackground">#029774</item>
+        <item name="stTextColor">#FFFFFF</item>
+        <item name="stColorBackground">#AF0107</item>
         <item name="stStrokeWidth">3dp</item>
-        <item name="stStrokeColor">#028340</item>
+        <item name="stStrokeColor">#FFFFFF</item>
+        <item name="stGravity">top</item>
         <item name="stIconStart">@drawable/toast_error</item>
     </style>
 
     <style name="toast_successfully">
         <item name="stTextBold">true</item>
-        <item name="stTextColor">#930202</item>
-        <item name="stColorBackground">#029774</item>
+        <item name="stGravity">top</item>
+        <item name="stTextColor">#FFFFFF</item>
+        <item name="stColorBackground">#01B68C</item>
         <item name="stStrokeWidth">3dp</item>
-        <item name="stStrokeColor">#028340</item>
+        <item name="stStrokeColor">#FFFFFF</item>
         <item name="stIconStart">@drawable/toast_error</item>
     </style>
 

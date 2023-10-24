@@ -31,7 +31,7 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboViewHolder> {
     @NonNull
     @Override
     public ComboViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ComboViewHolder(LayoutInflater.from(context).inflate(R.layout.order_components,parent,false));
+        return new ComboViewHolder(LayoutInflater.from(context).inflate(R.layout.combo_components,parent,false));
     }
 
     @Override

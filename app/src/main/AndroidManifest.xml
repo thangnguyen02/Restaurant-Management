@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,30 +14,48 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RestaurantManagement"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".item_food_category"-->
-<!--            android:exported="false" />-->
         <activity
-            android:name=".Actitvity.OrderListActivity"
+            android:name=".Activity.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".Actitvity.AddOrder"
+            android:name=".Activity.SlideActivity"
             android:exported="false" />
         <activity
-            android:name=".Actitvity.FoodCategoryActivity"
-            android:exported="true"></activity>
+            android:name=".Activity.OrderListActivity"
+            android:exported="false"
+            android:theme="@style/Theme.RestaurantManagement" />
         <activity
-            android:name=".Actitvity.FoodActivity"
-            android:exported="true"></activity>
+            android:name=".Activity.AddOrder"
+            android:exported="false"
+            android:theme="@style/Theme.RestaurantManagement" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".Activity.SplashScreen"
+            android:exported="true"
+            android:theme="@style/Theme.RestaurantManagement">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activity.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.HomeScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.FoodCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

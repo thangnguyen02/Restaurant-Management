@@ -18,6 +18,7 @@ import org.w3c.dom.CDATASection;
 @Database(entities = {TableOrder.class, TableOrderCustomer.class, FoodTable.class, ComboTable.class, FoodCategory.class, Combo.class},version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase database;
+
     private static String DATABASE_NAME="restaurantmanagement";
 
     public synchronized static AppDatabase getInstance(Context context) {
@@ -27,6 +28,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
         }
         return database;
+
     }
     public abstract TableOrderDAO tableOrderDAO();
     public abstract  TableOrderCustomerDAO tableOrderCustomerDAO();

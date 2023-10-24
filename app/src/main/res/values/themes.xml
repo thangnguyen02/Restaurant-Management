@@ -1,9 +1,47 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.RestaurantManagement" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryVariant">@color/blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/white</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>
 
-    <style name="Theme.RestaurantManagement" parent="Base.Theme.RestaurantManagement" />
+    <style name="Theme.RestaurantManagement" parent="Base.Theme.RestaurantManagement">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryVariant">@color/blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/white</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="toast_error">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#FFFFFF</item>
+        <item name="stColorBackground">#AF0107</item>
+        <item name="stStrokeWidth">3dp</item>
+        <item name="stStrokeColor">#FFFFFF</item>
+        <item name="stGravity">top</item>
+        <item name="stIconStart">@drawable/toast_error</item>
+    </style>
+
+    <style name="toast_successfully">
+        <item name="stTextBold">true</item>
+        <item name="stGravity">top</item>
+        <item name="stTextColor">#FFFFFF</item>
+        <item name="stColorBackground">#01B68C</item>
+        <item name="stStrokeWidth">3dp</item>
+        <item name="stStrokeColor">#FFFFFF</item>
+        <item name="stIconStart">@drawable/toast_error</item>
+    </style>
+
 </resources>

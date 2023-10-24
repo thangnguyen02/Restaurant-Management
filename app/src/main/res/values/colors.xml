@@ -2,12 +2,34 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blue">#25CCF7</color>
-    <color name="green">#45CE30</color>
+    <color name="blue">#09B18B</color>
+    <color name="gray">#454948</color>
+    <color name="green">#03983F</color>
     <color name="yellow">#FFF222</color>
     <color name="grey1">#99AAAB</color>
     <color name="red">#FF362E</color>
     <color name="grey2">#2C3335</color>
+    <color name="menu">#350864</color>
+    <color name="text_home">#086544</color>
     <color name="pink">#EA7773</color>
 
-</resources>
+    <!-- colors for button style -->
+
+    <color name="gradient_start_color">#4c84ff</color>
+    <color name="gradient_end_color">#18a3fe</color>
+
+
+    <!-- colors for tab and screent text -->
+
+    <color name="tab_indicator_gray">#c0c0c0</color>
+    <color name="intro_title_color">#000000</color>
+    <color name="intro_description_color">#656565</color>
+
+    //onboarding colors
+    <color name="background">#F0F4F3</color>
+    <color name="buttontext">#50C2C9</color>
+
+    //indicator color
+    <color name="inactive">#C4C4C4</color>
+    <color name="active">#50C2C9</color>
+    </resources>

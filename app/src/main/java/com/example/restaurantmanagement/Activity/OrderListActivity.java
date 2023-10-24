@@ -1,4 +1,4 @@
-package com.example.restaurantmanagement.Actitvity;
+package com.example.restaurantmanagement.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;

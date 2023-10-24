@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.restaurantmanagement.EventListener.ComboClickListener;
 import com.example.restaurantmanagement.Models.Combo;
 import com.example.restaurantmanagement.R;
 
@@ -19,7 +20,13 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboViewHolder> {
 
     Context context;
     List<Combo> listCombos;
+    ComboClickListener comboClickListener;
 
+    public ComboListAdapter(Context context, List<Combo> listCombos, ComboClickListener comboClickListener) {
+        this.context = context;
+        this.listCombos = listCombos;
+        this.comboClickListener = comboClickListener;
+    }
 
     @NonNull
     @Override
@@ -34,6 +41,12 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboViewHolder> {
         holder.tv_ComboPrice.setText(String.valueOf(combo.getPrice()));
         holder.tv_ComboName.setText(combo.getName());
         holder.tv_ComboDescription.setText(combo.getDescription());
+        holder.combo_container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                comboClickListener.onClick(listCombos.get(holder.getAdapterPosition()));
+            }
+        });
 
 
     }

@@ -277,14 +277,12 @@ _
                 android:id="@+id/imageView4e"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:paddingVertical="25dp"
-           android:layout_marginRight="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.484"
                 app:srcCompat="@drawable/menu1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

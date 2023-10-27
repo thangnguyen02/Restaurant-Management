@@ -57,27 +57,42 @@ public class HomeScreenActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an AlertDialog for confirmation
-                new AlertDialog.Builder(HomeScreenActivity.this)
-                        .setTitle("Confirm Logout")
-                        .setMessage("Are you sure you want to log out?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // User confirmed the logout, perform logout actions
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putBoolean("isLoggedIn", false);
-                                editor.putString("userName", "");
-                                editor.putBoolean("firstLogin", false);
-                                editor.apply();
+                AlertDialog.Builder builder = new AlertDialog.Builder(HomeScreenActivity.this);
+                View customView = getLayoutInflater().inflate(R.layout.custom_dialog, null);
 
-                                Intent intent = new Intent(HomeScreenActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        })
-                        .setNegativeButton("No", null) // Do nothing if the user selects "No"
-                        .show();
+                TextView dialogTitle = customView.findViewById(R.id.dialog_title);
+                Button buttonYes = customView.findViewById(R.id.dialog_button_yes);
+                Button buttonNo = customView.findViewById(R.id.dialog_button_no);
+
+                dialogTitle.setText("Are you sure want to logout?");
+
+                final AlertDialog dialog = builder.setView(customView).create();
+
+                buttonYes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("isLoggedIn", false);
+                        editor.putString("userName", "");
+                        editor.putBoolean("firstLogin", false);
+                        editor.apply();
+
+                        Intent intent = new Intent(HomeScreenActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+
+                        dialog.dismiss();
+                    }
+                });
+
+                buttonNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
             }
         });
 

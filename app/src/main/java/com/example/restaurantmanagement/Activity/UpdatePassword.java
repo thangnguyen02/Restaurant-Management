@@ -3,6 +3,7 @@ package com.example.restaurantmanagement.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -61,7 +62,9 @@ public class UpdatePassword extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         StyleableToast.makeText(getApplicationContext(), "Update password successfully", Toast.LENGTH_LONG, R.style.toast_successfully).show();
-
+                                        Intent intent = new Intent(UpdatePassword.this, ProfileActivity.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
                                 });
                             }

@@ -86,7 +86,12 @@ public class LoginActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 boolean isFirstLogin = sharedPreferences.getBoolean("firstLogin", false);
                                 editor.putBoolean("isLoggedIn", true);
-                                StyleableToast.makeText(getApplicationContext(), "Login successfully", Toast.LENGTH_LONG, R.style.toast_successfully).show();
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        StyleableToast.makeText(getApplicationContext(), "Login successfully", Toast.LENGTH_LONG, R.style.toast_successfully).show();
+                                    }
+                                });
 
                                 if (isFirstLogin) {
                                     editor.putBoolean("isFirstLogin", true);

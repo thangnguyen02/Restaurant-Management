@@ -42,4 +42,6 @@ dependencies {
     implementation ("io.github.muddz:styleabletoast:2.4.0")
 
     implementation ("com.airbnb.android:lottie:4.2.2")
+    implementation ("com.afollestad.material-dialogs:core:3.3.0")
+
 }

@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                             } else {
                                 SharedPreferences sharedPreferences = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                                boolean isFirstLogin = sharedPreferences.getBoolean("firstLogin", false);
+                                boolean isFirstLogin = sharedPreferences.getBoolean("firstLogin_"+userName, true);
                                 editor.putBoolean("isLoggedIn", true);
                                 runOnUiThread(new Runnable() {
                                     @Override

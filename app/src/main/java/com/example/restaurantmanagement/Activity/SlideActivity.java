@@ -126,6 +126,9 @@ public class SlideActivity extends AppCompatActivity {
                 backbtn.setVisibility(View.INVISIBLE);
 
             }
+            if(position == 2){
+                nextbtn.setText("finish");
+            }
 
         }
 

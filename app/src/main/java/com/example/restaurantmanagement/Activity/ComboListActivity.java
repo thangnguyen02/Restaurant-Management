@@ -1,6 +1,7 @@
 package com.example.restaurantmanagement.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -51,6 +52,7 @@ public class ComboListActivity extends AppCompatActivity {
     private void updateRecycler(List<Combo> combos){
         recyclerView.setHasFixedSize(true);
         comboListAdapter = new ComboListAdapter(ComboListActivity.this,combos,comboClickListener);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(comboListAdapter);
     }
 

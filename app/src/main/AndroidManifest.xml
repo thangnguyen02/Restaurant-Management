@@ -19,6 +19,7 @@
             android:name=".Activity.UpdatePassword"
             android:exported="false" />
 
+        <activity
             android:name=".Activity.AddCombo"
             android:exported="false"/>
         <activity

@@ -127,7 +127,9 @@ public class SlideActivity extends AppCompatActivity {
 
             }
             if(position == 2){
-                nextbtn.setText("finish");
+                nextbtn.setText("Finish");
+            }else{
+                nextbtn.setText("Next");
             }
 
         }

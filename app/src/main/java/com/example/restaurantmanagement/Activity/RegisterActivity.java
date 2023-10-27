@@ -71,7 +71,6 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void run() {
                                     if (emailExists > 0) {
                                         StyleableToast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_LONG, R.style.toast_error).show();
-//                                        Toast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_SHORT).show();
                                     } else {
                                         new Thread(new Runnable() {
                                             @Override
@@ -80,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                 runOnUiThread(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        StyleableToast.makeText(getApplicationContext(), "User registered", Toast.LENGTH_LONG, R.style.toast_error).show();
+                                                        StyleableToast.makeText(getApplicationContext(), "User registered", Toast.LENGTH_LONG, R.style.toast_successfully).show();
 //                                                        Toast.makeText(getApplicationContext(), "User registered", Toast.LENGTH_SHORT).show();
                                                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                                     }

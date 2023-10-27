@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import com.example.restaurantmanagement.R;
 public class HomeScreenActivity extends AppCompatActivity {
 
     TextView fullName;
+    ImageView profile;
     LinearLayout logout;
 
 
@@ -38,10 +40,19 @@ public class HomeScreenActivity extends AppCompatActivity {
             setContentView(R.layout.activity_home_screen);
             fullName = findViewById(R.id.username);
             String name = "Hi "+sharedPreferences.getString("userName", "")+"✋";closeContextMenu();
-
             fullName.setText(name);
+            profile = findViewById(R.id.profile);
             logout = findViewById(R.id.logout);
         }
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreenActivity.this, ProfileActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

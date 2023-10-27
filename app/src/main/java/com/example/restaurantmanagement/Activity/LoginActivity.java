@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         userId = findViewById(R.id.userId);
         password = findViewById(R.id.password);
         login = findViewById(R.id.login);
@@ -66,7 +67,6 @@ public class LoginActivity extends AppCompatActivity {
                 final String passwordText = password.getText().toString();
                 if (userIdText.isEmpty() || passwordText.isEmpty()){
                     StyleableToast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_LONG, R.style.toast_error).show();
-//                    Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
                 } else {
                     UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
                     final UserDao userDao = userDatabase.userDao();
@@ -78,7 +78,6 @@ public class LoginActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-//                                        Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
                                         StyleableToast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_LONG, R.style.toast_error).show();
                                     }
                                 });

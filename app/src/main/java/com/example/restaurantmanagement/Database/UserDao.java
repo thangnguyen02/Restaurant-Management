@@ -4,6 +4,7 @@ package com.example.restaurantmanagement.Database;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.restaurantmanagement.Models.UserEntity;
 
@@ -22,5 +23,10 @@ public interface UserDao {
     @Query("UPDATE users SET password = :newPassword WHERE email = :email")
     void updatePassword(String email, String newPassword);
 
+    @Query("SELECT * FROM users WHERE userId = :username")
+    UserEntity getUserByUsername(String username);
 
+
+    @Update
+    void updateUser(UserEntity userEntity);
 }

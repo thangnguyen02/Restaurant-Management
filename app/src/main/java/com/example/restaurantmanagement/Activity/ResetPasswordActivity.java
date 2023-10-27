@@ -50,7 +50,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 String confirmPass = confirmPassword.getText().toString();
 
                 if (!newPass.equals(confirmPass)) {
-//                    Toast.makeText(ResetPasswordActivity.this, "Password doesn't match confirmation", Toast.LENGTH_SHORT).show();
                     StyleableToast.makeText(getApplicationContext(), "Password doesn't match confirmation", Toast.LENGTH_LONG, R.style.toast_error).show();
 
                     return;
@@ -69,7 +68,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-//                                    Toast.makeText(ResetPasswordActivity.this, "Password updated successfully", Toast.LENGTH_SHORT).show();
                                     StyleableToast.makeText(getApplicationContext(), "Password updated successfully", Toast.LENGTH_LONG, R.style.toast_successfully).show();
                                     startActivity(new Intent(ResetPasswordActivity.this, LoginActivity.class));
                                 }
@@ -79,7 +77,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     StyleableToast.makeText(getApplicationContext(), "Email not registered", Toast.LENGTH_LONG, R.style.toast_error).show();
-//                                    Toast.makeText(ResetPasswordActivity.this, "Email not registered", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }

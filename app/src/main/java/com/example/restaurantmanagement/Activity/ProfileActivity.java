@@ -1,8 +1,10 @@
 package com.example.restaurantmanagement.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -122,6 +124,33 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent intent = new Intent(ProfileActivity.this, HomeScreenActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an AlertDialog for confirmation
+                new AlertDialog.Builder(ProfileActivity.this)
+                        .setTitle("Confirm Logout")
+                        .setMessage("Are you sure you want to log out?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // User confirmed the logout, perform logout actions
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putBoolean("isLoggedIn", false);
+                                editor.putString("userName", "");
+                                editor.putBoolean("firstLogin", false);
+                                editor.apply();
+
+                                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", null) // Do nothing if the user selects "No"
+                        .show();
             }
         });
 

@@ -24,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/profile" />
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/textView"
@@ -59,6 +59,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="25dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -74,9 +75,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginVertical="5dp"
-                    app:srcCompat="@drawable/ic_1" />
+                    app:srcCompat="@drawable/home" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -84,7 +83,7 @@
                     android:layout_margin="10dp"
                     android:text="Home"
                     android:textAlignment="center"
-                    android:textColor="#000000"
+                    android:textColor="#ffffff"
                     android:textSize="11sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -102,17 +101,15 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginVertical="5dp"
-                    app:srcCompat="@drawable/ic_2" />
+                    app:srcCompat="@drawable/reset" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Update password"
+                    android:text="Password"
                     android:textAlignment="center"
-                    android:textColor="#000000"
+                    android:textColor="#ffffff"
                     android:textSize="11sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -130,8 +127,6 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginVertical="5dp"
                     app:srcCompat="@drawable/logout" />
 
                 <TextView

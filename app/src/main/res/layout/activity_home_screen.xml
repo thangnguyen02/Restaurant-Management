@@ -233,7 +233,6 @@ _
                 <ImageView
                     android:id="@+id/imageView2p"
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/logout" />

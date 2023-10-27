@@ -68,6 +68,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putBoolean("isLoggedIn", false);
                                 editor.putString("userName", "");
+                                editor.putBoolean("firstLogin", false);
                                 editor.apply();
 
                                 Intent intent = new Intent(HomeScreenActivity.this, LoginActivity.class);

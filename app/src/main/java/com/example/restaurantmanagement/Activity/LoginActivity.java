@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String userIdText = userId.getText().toString();
                 final String passwordText = password.getText().toString();
-                if (userIdText.isEmpty() || passwordText.isEmpty()){
+                if (userIdText.isEmpty() || passwordText.isEmpty()) {
                     StyleableToast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_LONG, R.style.toast_error).show();
                 } else {
                     UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
@@ -82,14 +82,24 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 });
                             } else {
-
                                 SharedPreferences sharedPreferences = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
+                                boolean isFirstLogin = sharedPreferences.getBoolean("firstLogin", false);
                                 editor.putBoolean("isLoggedIn", true);
-                                editor.putString("userName", userIdText);
-                                editor.apply();
+                                StyleableToast.makeText(getApplicationContext(), "Login successfully", Toast.LENGTH_LONG, R.style.toast_successfully).show();
 
-                                startActivity(new Intent(LoginActivity.this, SlideActivity.class));
+                                if (isFirstLogin) {
+                                    editor.putBoolean("isFirstLogin", true);
+                                    editor.putString("userName", userIdText);
+                                    editor.apply();
+                                    startActivity(new Intent(LoginActivity.this, SlideActivity.class));
+                                } else {
+                                    editor.putBoolean("isFirstLogin", false);
+                                    editor.putString("userName", userIdText);
+                                    editor.apply();
+                                    startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));
+                                }
+
                                 finish();
                             }
                         }
@@ -97,6 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
 }

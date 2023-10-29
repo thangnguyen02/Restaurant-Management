@@ -21,6 +21,15 @@ public class FoodCategory {
 
     }
 
+    @Override
+    public String toString() {
+        return "FoodCategory{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }

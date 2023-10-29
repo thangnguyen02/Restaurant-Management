@@ -15,7 +15,7 @@ import com.example.restaurantmanagement.Models.TableOrderCustomer;
 
 import org.w3c.dom.CDATASection;
 
-@Database(entities = {TableOrder.class, TableOrderCustomer.class, FoodTable.class, ComboTable.class, FoodCategory.class, Food.class},version = 2)
+@Database(entities = {TableOrder.class, TableOrderCustomer.class, FoodTable.class, ComboTable.class, FoodCategory.class, Food.class},version = 4)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase database;
 
@@ -35,4 +35,5 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract  FoodTableDAO foodTableDAO();
     public  abstract  ComboTableDAO comboTableDAO();
     public abstract FoodCategoryDAO foodCategoryDAO();
+    public abstract FoodDAO foodDAO();
 }

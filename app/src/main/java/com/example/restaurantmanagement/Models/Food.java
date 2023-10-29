@@ -2,6 +2,7 @@ package com.example.restaurantmanagement.Models;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
 @Entity(tableName = "Food")
 public class Food {
     @PrimaryKey(autoGenerate = true)
@@ -11,9 +12,14 @@ public class Food {
 
     private Double price;
 
-    private String image;
+    private byte[] image;
 
     private Long categoryId;
+    public Food( ) {
+
+
+    }
+
 
     public Long getId() {
         return id;
@@ -47,11 +53,12 @@ public class Food {
         this.price = price;
     }
 
-    public String getImage() {
+
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 

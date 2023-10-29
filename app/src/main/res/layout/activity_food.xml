@@ -31,24 +31,36 @@
         android:id="@+id/categorySpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:paddingBottom="15dp" />
+
     <ImageView
         android:id="@+id/foodImageView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginTop="15dp"
+        android:contentDescription="Food Image"
         android:scaleType="centerCrop"
-        android:src="@drawable/placeholder_image"
-    android:contentDescription="Food Image" />
+        android:src="@drawable/placeholder_image" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Image"
-        android:onClick="selectImage" />
+        android:layout_marginTop="15dp"
+        android:onClick="selectImage"
+        android:text="Select Image" />
 
     <Button
+        android:id="@+id/btnAddFood"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="15dp"
+        android:onClick="saveFood"
+        android:text="Save Food" />
+
+    <Button
+        android:id="@+id/goToList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save Food"
-        android:onClick="saveFood" />
+        android:text="Go To List Food" />
 </LinearLayout>

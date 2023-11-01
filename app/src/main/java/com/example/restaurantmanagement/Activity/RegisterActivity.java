@@ -14,6 +14,7 @@ import com.example.restaurantmanagement.Database.UserDao;
 import com.example.restaurantmanagement.Database.UserDatabase;
 import com.example.restaurantmanagement.Models.UserEntity;
 import com.example.restaurantmanagement.R;
+import com.facebook.stetho.Stetho;
 
 import io.github.muddz.styleabletoast.StyleableToast;
 
@@ -25,8 +26,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_register);
+
         userId = findViewById(R.id.userId);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
@@ -57,20 +61,22 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (validateInput(userEntity)) {
                     UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
-                    final UserDao userDao = userDatabase.userDao();
-                    final String emailToCheck = userEntity.getEmail();
+                    UserDao userDao = userDatabase.userDao();
+                    String emailToCheck = userEntity.getEmail();
+                    String usernameToCheck = userEntity.getUserId();
+
 
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             // Kiểm tra xem địa chỉ email đã tồn tại trong cơ sở dữ liệu hay chưa.
-                            int emailExists = userDao.checkEmailExists(emailToCheck);
+                            int userExists = userDao.checkEmailOrUserIdExists(emailToCheck, usernameToCheck);
 
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if (emailExists > 0) {
-                                        StyleableToast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_LONG, R.style.toast_error).show();
+                                    if (userExists > 0) {
+                                        StyleableToast.makeText(getApplicationContext(), "Email or username already registered", Toast.LENGTH_LONG, R.style.toast_error).show();
                                     } else {
                                         new Thread(new Runnable() {
                                             @Override
@@ -80,7 +86,6 @@ public class RegisterActivity extends AppCompatActivity {
                                                     @Override
                                                     public void run() {
                                                         StyleableToast.makeText(getApplicationContext(), "User registered", Toast.LENGTH_LONG, R.style.toast_successfully).show();
-//                                                        Toast.makeText(getApplicationContext(), "User registered", Toast.LENGTH_SHORT).show();
                                                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                                     }
                                                 });
@@ -93,18 +98,18 @@ public class RegisterActivity extends AppCompatActivity {
                     }).start();
                 } else {
                     StyleableToast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_LONG, R.style.toast_error).show();
-//                    Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
     }
+
     private Boolean validateInput(UserEntity userEntity) {
         if (userEntity.getUserId().isEmpty() ||
                 userEntity.getEmail().isEmpty() ||
                 userEntity.getPassword().isEmpty() ||
                 userEntity.getFullName().isEmpty() ||
-                userEntity.getPhone().isEmpty()){
+                userEntity.getPhone().isEmpty()) {
             return false;
         }
         return true;

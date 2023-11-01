@@ -19,6 +19,7 @@ import com.example.restaurantmanagement.Database.UserDao;
 import com.example.restaurantmanagement.Database.UserDatabase;
 import com.example.restaurantmanagement.Models.UserEntity;
 import com.example.restaurantmanagement.R;
+import com.facebook.stetho.Stetho;
 
 import io.github.muddz.styleabletoast.StyleableToast;
 
@@ -31,7 +32,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_profile);
 
         UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());

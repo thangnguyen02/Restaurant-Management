@@ -19,6 +19,7 @@ import com.example.restaurantmanagement.Database.UserDao;
 import com.example.restaurantmanagement.Database.UserDatabase;
 import com.example.restaurantmanagement.Models.UserEntity;
 import com.example.restaurantmanagement.R;
+import com.facebook.stetho.Stetho;
 
 import io.github.muddz.styleabletoast.StyleableToast;
 
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         SharedPreferences prefs = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
         String userName = prefs.getString("userName", "");
 
@@ -38,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
         super.onCreate(savedInstanceState);
+        Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_login);
 
         userId = findViewById(R.id.userId);

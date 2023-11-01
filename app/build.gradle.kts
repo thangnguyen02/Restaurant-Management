@@ -43,5 +43,7 @@ dependencies {
 
     implementation ("com.airbnb.android:lottie:4.2.2")
     implementation ("com.afollestad.material-dialogs:core:3.3.0")
+    implementation ("com.facebook.stetho:stetho:1.6.0")
+    implementation ("com.facebook.stetho:stetho-js-rhino:1.6.0")
 
 }

@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.facebook.stetho.Stetho;
 
 import com.example.restaurantmanagement.R;
 
@@ -37,6 +38,7 @@ public class HomeScreenActivity extends AppCompatActivity {
             finish();
         }else{
             super.onCreate(savedInstanceState);
+            Stetho.initializeWithDefaults(this);
             setContentView(R.layout.activity_home_screen);
             fullName = findViewById(R.id.username);
             String name = "Hi "+sharedPreferences.getString("userName", "")+"✋";closeContextMenu();

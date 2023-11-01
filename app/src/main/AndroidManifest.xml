@@ -54,6 +54,16 @@
             android:name=".Activity.ResetPasswordActivity"
             android:exported="false" />
         <activity
+            android:name=".Activity.FoodActivity"
+            android:exported="true" >
+
+        </activity>
+        <activity
+            android:name=".Activity.ListFoodActivity"
+            android:exported="true" >
+
+        </activity>
+        <activity
             android:name=".Activity.HomeScreenActivity"
             android:exported="false" />
         <activity
@@ -64,7 +74,7 @@
             android:exported="false" />
         <activity
             android:name=".Activity.FoodCategoryActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />

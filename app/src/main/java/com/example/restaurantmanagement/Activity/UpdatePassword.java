@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.restaurantmanagement.Database.UserDao;
@@ -21,6 +22,7 @@ import io.github.muddz.styleabletoast.StyleableToast;
 public class UpdatePassword extends AppCompatActivity {
 
     EditText password, confirm;
+    TextView linkToProfile;
     Button save;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,14 @@ public class UpdatePassword extends AppCompatActivity {
         password = findViewById(R.id.password);
         confirm = findViewById(R.id.confirm);
         save = findViewById(R.id.save);
+        linkToProfile = findViewById(R.id.linkToProfile);
+
+        linkToProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UpdatePassword.this, ProfileActivity.class));
+            }
+        });
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override

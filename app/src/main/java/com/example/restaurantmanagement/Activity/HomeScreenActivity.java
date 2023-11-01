@@ -22,7 +22,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     TextView fullName;
     ImageView profile;
-    LinearLayout logout;
+    LinearLayout logout, imageView2;
 
 
     @Override

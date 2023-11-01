@@ -24,16 +24,20 @@ public class UserEntity {
     @ColumnInfo(name = "phone")
     String phone;
 
+    @ColumnInfo(name = "image")
+    byte[] image;
+
     public UserEntity() {
     }
 
-    public UserEntity(Integer id, String userId, String email, String password, String fullName, String phone) {
+    public UserEntity(Integer id, String userId, String email, String password, String fullName, String phone, byte[] image) {
         this.id = id;
         this.userId = userId;
         this.email = email;
         this.password = password;
         this.fullName = fullName;
         this.phone = phone;
+        this.image = image;
     }
 
     public Integer getId() {
@@ -82,5 +86,13 @@ public class UserEntity {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

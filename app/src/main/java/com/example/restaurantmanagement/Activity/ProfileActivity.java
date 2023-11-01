@@ -7,10 +7,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,18 +59,23 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         new Thread(new Runnable() {
+            ImageView avatarImageView = findViewById(R.id.avatar);
             @Override
             public void run() {
                 final UserEntity userEntity = userDao.getUserByUsername(name);
-                if (userEntity != null) {
+                if (userEntity != null || userEntity.getImage() != null) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            Bitmap userAvatar = BitmapFactory.decodeByteArray(userEntity.getImage(), 0, userEntity.getImage().length);
+                            avatarImageView.setImageBitmap(userAvatar);
                             email.setText(userEntity.getEmail());
                             fullname.setText(userEntity.getFullName());
                             phone.setText(userEntity.getPhone());
                         }
                     });
+                }else{
+                    avatarImageView.setImageResource(R.drawable.logo);
                 }
             }
         }).start();

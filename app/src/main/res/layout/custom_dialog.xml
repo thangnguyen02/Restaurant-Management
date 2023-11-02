@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Tiêu đề của hộp thoại -->
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Are you sure want to logout?"
+        android:textSize="20sp"
+        android:layout_marginBottom="25dp"
+        android:textColor="#000" />
+
+
+    <!-- Dòng chứa nút "Yes" và "No" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <!-- Nút "Yes" -->
+        <Button
+            android:id="@+id/dialog_button_yes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Yes"
+            android:layout_marginRight="50dp"
+            android:textSize="16sp"
+            android:textColor="#fff"
+            android:backgroundTint="#02D15F"
+            android:layout_gravity="center" />
+
+        <!-- Nút "No" -->
+        <Button
+            android:id="@+id/dialog_button_no"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="No"
+            android:textSize="16sp"
+            android:textColor="#fff"
+            android:backgroundTint="#FF0000"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+</LinearLayout>

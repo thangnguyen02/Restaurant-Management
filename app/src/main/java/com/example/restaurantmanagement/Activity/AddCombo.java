@@ -45,7 +45,7 @@ public class AddCombo extends AppCompatActivity {
                 Combo combo = new Combo(0,tv_addComboName.getText().toString(),
                         tml_addComboDescription.getText().toString(),
                         Double.parseDouble(tv_addComboPrice.getText().toString()));
-              //  database.comboDAO().insertCombos(combo);
+//                database.comboDAO().insertCombos(combo);
             }
         });
     }

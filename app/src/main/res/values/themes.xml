@@ -41,7 +41,7 @@
         <item name="stColorBackground">#01B68C</item>
         <item name="stStrokeWidth">3dp</item>
         <item name="stStrokeColor">#FFFFFF</item>
-        <item name="stIconStart">@drawable/toast_error</item>
+        <item name="stIconStart">@drawable/toast_success</item>
     </style>
 
 </resources>

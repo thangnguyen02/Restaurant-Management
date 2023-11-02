@@ -7,17 +7,17 @@
     android:background="@color/background"
     tools:context=".Activity.SlideActivity">
 
-    <Button
-        android:id="@+id/skipButton"
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#00000000"
-        android:text="Skip"
-        android:textColor="@color/buttontext"
-        android:layout_marginTop="25sp"
-        android:textSize="20sp"
+        android:text="WELCOME"
+        android:textColor="@color/green"
+        android:textSize="32sp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/slideViewPager"

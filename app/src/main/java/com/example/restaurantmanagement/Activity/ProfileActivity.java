@@ -63,6 +63,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void run() {
                 final UserEntity userEntity = userDao.getUserByUsername(name);
+                System.out.println("id: "+ userEntity.getId());
                 if (userEntity != null || userEntity.getImage() != null) {
                     runOnUiThread(new Runnable() {
                         @Override

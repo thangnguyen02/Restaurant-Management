@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import com.example.restaurantmanagement.Models.UserEntity;
 
-@Database(entities = {UserEntity.class}, version = 2)
+@Database(entities = {UserEntity.class}, version = 1)
 public abstract class UserDatabase extends RoomDatabase{
 
     private static final String dbName = "user";

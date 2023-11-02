@@ -69,17 +69,16 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Creating user entity
-                register();
+                signup();
             }
         });
 
     }
-    public void register(){
+    public void signup(){
         UserEntity userEntity = new UserEntity();
 
         userEntity.setUserId(userId.getText().toString());
@@ -88,8 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
         userEntity.setFullName(fullName.getText().toString());
         userEntity.setPhone(phone.getText().toString());
 
-
-        if (validateInput(userEntity) || selectedImageUri != null) {
+        if (validateInput(userEntity) && selectedImageUri != null) {
             UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
             UserDao userDao = userDatabase.userDao();
             String emailToCheck = userEntity.getEmail();
@@ -143,6 +141,18 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+    private Boolean validateInput(UserEntity userEntity) {
+        if (userEntity.getUserId().isEmpty() ||
+                userEntity.getEmail().isEmpty() ||
+                userEntity.getPassword().isEmpty() ||
+                userEntity.getFullName().isEmpty() ||
+                userEntity.getPhone().isEmpty()
+                || selectedImageUri == null) {
+            return false;
+        }
+        return true;
+    }
+
     public void selectImage(View view) {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
@@ -162,15 +172,5 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    private Boolean validateInput(UserEntity userEntity) {
-        if (userEntity.getUserId().isEmpty() ||
-                userEntity.getEmail().isEmpty() ||
-                userEntity.getPassword().isEmpty() ||
-                userEntity.getFullName().isEmpty() ||
-                userEntity.getPhone().isEmpty()
-                        || selectedImageUri == null) {
-            return false;
-        }
-        return true;
-    }
+
 }

@@ -27,10 +27,13 @@ public class UserEntity {
     @ColumnInfo(name = "image")
     byte[] image;
 
+    @ColumnInfo(name = "isAdmin")
+    int isAdmin;
+
     public UserEntity() {
     }
 
-    public UserEntity(Integer id, String userId, String email, String password, String fullName, String phone, byte[] image) {
+    public UserEntity(Integer id, String userId, String email, String password, String fullName, String phone, byte[] image, int isAdmin) {
         this.id = id;
         this.userId = userId;
         this.email = email;
@@ -38,6 +41,7 @@ public class UserEntity {
         this.fullName = fullName;
         this.phone = phone;
         this.image = image;
+        this.isAdmin = isAdmin;
     }
 
     public Integer getId() {
@@ -94,5 +98,13 @@ public class UserEntity {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public int getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
     }
 }

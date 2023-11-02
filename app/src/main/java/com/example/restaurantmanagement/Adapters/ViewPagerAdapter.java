@@ -32,14 +32,7 @@ public class ViewPagerAdapter extends PagerAdapter {
             R.string.heading_three,
     };
 
-    int description[] = {
-
-            R.string.desc_one,
-            R.string.desc_two,
-            R.string.desc_three,
-    };
-
-    public ViewPagerAdapter(Context context){
+    public ViewPagerAdapter(Context context) {
 
         this.context = context;
 
@@ -47,12 +40,12 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return  headings.length;
+        return headings.length;
     }
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == (LinearLayout) object;
+        return view == object;
     }
 
     @NonNull
@@ -60,15 +53,13 @@ public class ViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.slider_layout,container,false);
+        View view = layoutInflater.inflate(R.layout.slider_layout, container, false);
 
-        ImageView slidetitleimage = (ImageView) view.findViewById(R.id.titleImage);
-        TextView slideHeading = (TextView) view.findViewById(R.id.texttitle);
-        TextView slideDesciption = (TextView) view.findViewById(R.id.textdeccription);
+        ImageView slidetitleimage = view.findViewById(R.id.titleImage);
+        TextView slideHeading = view.findViewById(R.id.texttitle);
 
         slidetitleimage.setImageResource(images[position]);
         slideHeading.setText(headings[position]);
-        slideDesciption.setText(description[position]);
 
         container.addView(view);
 
@@ -79,7 +70,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
 
-        container.removeView((LinearLayout)object);
+        container.removeView((LinearLayout) object);
 
     }
 }

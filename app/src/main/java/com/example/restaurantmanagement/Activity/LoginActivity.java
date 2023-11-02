@@ -19,6 +19,7 @@ import com.example.restaurantmanagement.Database.UserDao;
 import com.example.restaurantmanagement.Database.UserDatabase;
 import com.example.restaurantmanagement.Models.UserEntity;
 import com.example.restaurantmanagement.R;
+import com.facebook.stetho.Stetho;
 
 import io.github.muddz.styleabletoast.StyleableToast;
 
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         SharedPreferences prefs = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
         String userName = prefs.getString("userName", "");
 
@@ -38,7 +40,9 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
         super.onCreate(savedInstanceState);
+        Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_login);
+
         userId = findViewById(R.id.userId);
         password = findViewById(R.id.password);
         login = findViewById(R.id.login);
@@ -64,9 +68,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String userIdText = userId.getText().toString();
                 final String passwordText = password.getText().toString();
-                if (userIdText.isEmpty() || passwordText.isEmpty()){
+                if (userIdText.isEmpty() || passwordText.isEmpty()) {
                     StyleableToast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_LONG, R.style.toast_error).show();
-//                    Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
                 } else {
                     UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
                     final UserDao userDao = userDatabase.userDao();
@@ -78,19 +81,33 @@ public class LoginActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-//                                        Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
                                         StyleableToast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_LONG, R.style.toast_error).show();
                                     }
                                 });
                             } else {
-
                                 SharedPreferences sharedPreferences = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
+                                boolean isFirstLogin = sharedPreferences.getBoolean("firstLogin_"+userIdText, true);
                                 editor.putBoolean("isLoggedIn", true);
-                                editor.putString("userName", userIdText);
-                                editor.apply();
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        StyleableToast.makeText(getApplicationContext(), "Login successfully", Toast.LENGTH_LONG, R.style.toast_successfully).show();
+                                    }
+                                });
 
-                                startActivity(new Intent(LoginActivity.this, SlideActivity.class));
+                                if (isFirstLogin) {
+                                    editor.putBoolean("isFirstLogin", true);
+                                    editor.putString("userName", userIdText);
+                                    editor.apply();
+                                    startActivity(new Intent(LoginActivity.this, SlideActivity.class));
+                                } else {
+                                    editor.putBoolean("isFirstLogin", false);
+                                    editor.putString("userName", userIdText);
+                                    editor.apply();
+                                    startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));
+                                }
+
                                 finish();
                             }
                         }
@@ -98,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
 }

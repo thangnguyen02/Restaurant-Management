@@ -15,6 +15,8 @@ public interface FoodCategoryDAO {
     @Query("select * from FoodCategory")
     List<FoodCategory> getListFoodCategory();
 
+    @Query("SELECT name FROM FOODCATEGORY")
+    List<String> getListFoodCategoryName();
     @Insert
     void insertFoodCategory(FoodCategory foodCategory);
 

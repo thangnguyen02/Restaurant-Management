@@ -25,7 +25,7 @@ import io.github.muddz.styleabletoast.StyleableToast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText email, password;
+    EditText userId, password;
     Button login;
     TextView linkToRegister, reset;
 
@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_login);
 
-        email = findViewById(R.id.userId);
+        userId = findViewById(R.id.userId);
         password = findViewById(R.id.password);
         login = findViewById(R.id.login);
         linkToRegister = findViewById(R.id.linkToRegister);
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String userIdText = email.getText().toString();
+                final String userIdText = userId.getText().toString();
                 final String passwordText = password.getText().toString();
                 if (userIdText.isEmpty() || passwordText.isEmpty()) {
                     StyleableToast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_LONG, R.style.toast_error).show();
@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 });
                             } else {
+                                System.out.println("rebn: "+ userIdText);
                                 SharedPreferences sharedPreferences = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 boolean isFirstLogin = sharedPreferences.getBoolean("firstLogin_"+userIdText, true);

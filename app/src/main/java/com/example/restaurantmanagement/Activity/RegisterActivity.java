@@ -111,13 +111,13 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     // Kiểm tra xem địa chỉ email đã tồn tại trong cơ sở dữ liệu hay chưa.
-                    int userExists = userDao.checkEmailOrUserIdExists(emailToCheck, usernameToCheck);
+                    int userExists = userDao.checkEmailExists(emailToCheck);
 
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (userExists > 0) {
-                                StyleableToast.makeText(getApplicationContext(), "Email or username already registered", Toast.LENGTH_LONG, R.style.toast_error).show();
+                                StyleableToast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_LONG, R.style.toast_error).show();
                             } else {
                                 new Thread(new Runnable() {
                                     @Override

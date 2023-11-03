@@ -41,7 +41,6 @@
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rose@gmail.com"
         android:textColor="@color/green"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -162,7 +161,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Username"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -178,7 +176,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Phone"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -194,7 +191,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Full name"
                 android:textSize="18sp" />
         </LinearLayout>
 

@@ -119,9 +119,14 @@ public class ProfileActivity extends AppCompatActivity {
                 update.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String newUsername = editUsername.getText().toString();
-                        String newPhone = editPhone.getText().toString();
-                        String newFullname = editFullname.getText().toString();
+                        String newUsername = editUsername.getText().toString().trim();
+                        String newPhone = editPhone.getText().toString().trim();
+                        String newFullname = editFullname.getText().toString().trim();
+                        if (newUsername.isEmpty() || newPhone.isEmpty() || newFullname.isEmpty()) {
+                            // Display an error message if any of the fields are empty
+                            StyleableToast.makeText(getApplicationContext(), "Please fill in all fields", Toast.LENGTH_LONG, R.style.toast_error).show();
+                            return;
+                        }
                         new Thread(new Runnable() {
                             @Override
                             public void run() {
@@ -149,7 +154,6 @@ public class ProfileActivity extends AppCompatActivity {
                 });
             }
         });
-
 
 
         home.setOnClickListener(new View.OnClickListener() {

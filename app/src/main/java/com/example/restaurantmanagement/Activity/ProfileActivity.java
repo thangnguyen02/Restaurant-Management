@@ -29,9 +29,10 @@ import io.github.muddz.styleabletoast.StyleableToast;
 public class ProfileActivity extends AppCompatActivity {
 
     LinearLayout home, updatePassword, logout;
-    EditText email, fullname, phone;
-    TextView username;
-    Button save;
+    TextView username, fullname, phone, email;
+    Button edit, update;
+    EditText editUsername, editPhone, editFullname;
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
         Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_profile);
 
+
         UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
         final UserDao userDao = userDatabase.userDao();
 
@@ -47,22 +49,30 @@ public class ProfileActivity extends AppCompatActivity {
         updatePassword = findViewById(R.id.updatePassword);
         logout = findViewById(R.id.logout);
         email = findViewById(R.id.email);
+        username = findViewById(R.id.username);
         fullname = findViewById(R.id.fullname);
         phone = findViewById(R.id.phone);
-        save = findViewById(R.id.save);
+        edit = findViewById(R.id.edit);
+        back = findViewById(R.id.back);
 
-        username = findViewById(R.id.textView);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, HomeScreenActivity.class));
+            }
+        });
+
         SharedPreferences sharedPreferences = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
         String name = sharedPreferences.getString("userName", "");
         closeContextMenu();
-        username.setText(name);
-
 
         new Thread(new Runnable() {
             ImageView avatarImageView = findViewById(R.id.avatar);
+
             @Override
             public void run() {
                 final UserEntity userEntity = userDao.getUserByUsername(name);
+                System.out.println("id: " + userEntity.getId());
                 if (userEntity != null || userEntity.getImage() != null) {
                     runOnUiThread(new Runnable() {
                         @Override
@@ -70,61 +80,87 @@ public class ProfileActivity extends AppCompatActivity {
                             Bitmap userAvatar = BitmapFactory.decodeByteArray(userEntity.getImage(), 0, userEntity.getImage().length);
                             avatarImageView.setImageBitmap(userAvatar);
                             email.setText(userEntity.getEmail());
+                            username.setText(userEntity.getUserId());
                             fullname.setText(userEntity.getFullName());
                             phone.setText(userEntity.getPhone());
+
                         }
                     });
-                }else{
-                    avatarImageView.setImageResource(R.drawable.logo);
+                } else {
+                    avatarImageView.setImageResource(R.drawable.avatar);
                 }
             }
         }).start();
 
-        save.setOnClickListener(new View.OnClickListener() {
+        edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String uemail = email.getText().toString();
-                String ufullname = fullname.getText().toString();
-                String uphone = phone.getText().toString();
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+                View customView = getLayoutInflater().inflate(R.layout.update_profile_dialog, null);
+
+                editUsername = customView.findViewById(R.id.edit_username);
+                editPhone = customView.findViewById(R.id.edit_phone);
+                editFullname = customView.findViewById(R.id.edit_fullname);
+                update = customView.findViewById(R.id.updateProfile);
+
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        UserEntity userEntity = userDao.getUserByUsername(name);
+                        final UserEntity userEntity = userDao.getUserByUsername(name);
                         if (userEntity != null) {
-                            // Check if the email has been changed
-                            if (!uemail.equals(userEntity.getEmail())) {
-                                // Email has been changed, check if it already exists
-                                int emailExists = userDao.checkEmailExists(uemail);
-                                if (emailExists > 0) {
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            StyleableToast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_LONG, R.style.toast_error).show();
-                                        }
-                                    });
-                                    return; // Exit the function if the email already exists
-                                }
-                            }
-
-                            // Update userEntity with the new information
-                            userEntity.setEmail(uemail);
-                            userEntity.setFullName(ufullname);
-                            userEntity.setPhone(uphone);
-
-                            // Call the updateUser method to update the user in the database
-                            userDao.updateUser(userEntity);
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    email.setText(uemail);
-                                    fullname.setText(ufullname);
-                                    phone.setText(uphone);
-                                    StyleableToast.makeText(getApplicationContext(), "Update profile successfully", Toast.LENGTH_LONG, R.style.toast_successfully).show();
+                                    editUsername.setText(userEntity.getUserId());
+                                    editPhone.setText(userEntity.getPhone());
+                                    editFullname.setText(userEntity.getFullName());
+
                                 }
                             });
                         }
                     }
                 }).start();
+
+                builder.setView(customView);
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                update.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String newUsername = editUsername.getText().toString().trim();
+                        String newPhone = editPhone.getText().toString().trim();
+                        String newFullname = editFullname.getText().toString().trim();
+                        if (newUsername.isEmpty() || newPhone.isEmpty() || newFullname.isEmpty()) {
+                            // Display an error message if any of the fields are empty
+                            StyleableToast.makeText(getApplicationContext(), "Please fill in all fields", Toast.LENGTH_LONG, R.style.toast_error).show();
+                            return;
+                        }
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                final UserEntity userEntity = userDao.getUserByUsername(name);
+                                if (userEntity != null) {
+                                    userEntity.setUserId(newUsername);
+                                    userEntity.setPhone(newPhone);
+                                    userEntity.setFullName(newFullname);
+
+                                    userDao.updateUser(userEntity);
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            dialog.dismiss();
+                                            StyleableToast.makeText(getApplicationContext(), "Update information successfully", Toast.LENGTH_LONG, R.style.toast_successfully).show();
+                                            Intent profileIntent = new Intent(ProfileActivity.this, ProfileActivity.class);
+                                            startActivity(profileIntent);
+                                            finish();
+                                        }
+                                    });
+                                }
+                            }
+                        }).start();
+                    }
+                });
             }
         });
 
@@ -190,7 +226,6 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
-
-
     }
+
 }

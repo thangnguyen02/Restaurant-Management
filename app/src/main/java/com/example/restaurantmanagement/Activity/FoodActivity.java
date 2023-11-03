@@ -103,10 +103,10 @@ public class FoodActivity extends AppCompatActivity {
     }
 
     private void addFood() {
-        List<Food> foods = AppDatabase.getInstance(this).foodDAO().getListFood();
-        Bitmap bitmaps = BitmapFactory.decodeByteArray(foods.get(0).getImage(), 0, foods.get(0).getImage().length);
-
-        foodImageView.setImageBitmap(bitmaps);
+//        List<Food> foods = AppDatabase.getInstance(this).foodDAO().getListFood();
+//        Bitmap bitmaps = BitmapFactory.decodeByteArray(foods.get(0).getImage(), 0, foods.get(0).getImage().length);
+//
+//        foodImageView.setImageBitmap(bitmaps);
 
 
         Food food = new Food();
@@ -143,6 +143,8 @@ public class FoodActivity extends AppCompatActivity {
             foodDescriptionEditText.setText("");
             foodPriceEditText.setText("");
             foodImageView.setImageURI(null);
+            Toast.makeText(this, "Save food successfully!!", Toast.LENGTH_SHORT).show();
+
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Invalid price format. Please enter a valid number.", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {

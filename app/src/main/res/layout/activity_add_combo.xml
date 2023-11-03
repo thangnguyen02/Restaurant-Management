@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Actitvity.AddCombo">
+    tools:context=".Activity.AddCombo">
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="16dp"
         android:text="ComboName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,8 +37,8 @@
     <EditText
         android:id="@+id/tv_AddComboName"
         android:layout_width="257dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="12dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="text"
@@ -48,7 +48,7 @@
     <EditText
         android:id="@+id/tml_AddDescription"
         android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Description"
@@ -60,28 +60,40 @@
         android:id="@+id/btn_addCombo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="16dp"
         android:text="Add"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/tv_addComboPrice" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_ComboList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
+        android:layout_marginStart="84dp"
         android:text="List"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toEndOf="@+id/btn_addCombo"
         app:layout_constraintTop_toTopOf="@+id/btn_addCombo" />
 
     <EditText
         android:id="@+id/tv_addComboPrice"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:ems="10"
         android:hint="Price"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="@+id/tml_AddDescription"
         app:layout_constraintTop_toBottomOf="@+id/tml_AddDescription" />
+
+    <Spinner
+        android:id="@+id/spin_ComboAddCategory"
+        android:layout_width="166dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 </androidx.constraintlayout.widget.ConstraintLayout>

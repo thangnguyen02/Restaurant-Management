@@ -14,8 +14,8 @@ public interface UserDao {
     @Insert
     void registerUser(UserEntity userEntity);
 
-    @Query("SELECT * from users where userId=(:userId) and password=(:password)")
-    UserEntity login(String userId, String password);
+    @Query("SELECT * from users where email=(:email) and password=(:password)")
+    UserEntity login(String email, String password);
 
     @Query("SELECT COUNT(*) FROM users WHERE email = :email")
     int checkEmailExists(String email);
@@ -29,6 +29,8 @@ public interface UserDao {
     @Query("SELECT * FROM users WHERE userId = :username")
     UserEntity getUserByUsername(String username);
 
+    @Query("SELECT * FROM users WHERE email = :email")
+    UserEntity getUserByEmail(String email);
 
     @Update
     void updateUser(UserEntity userEntity);

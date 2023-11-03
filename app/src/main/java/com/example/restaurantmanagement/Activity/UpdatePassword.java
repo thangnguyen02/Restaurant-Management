@@ -50,7 +50,7 @@ public class UpdatePassword extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String newPassword = password.getText().toString();
+                String newPassword = password.getText().toString();
                 String confirmPassword = confirm.getText().toString();
 
                 if (!newPassword.equals(confirmPassword)) {

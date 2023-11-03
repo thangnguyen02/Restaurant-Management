@@ -142,10 +142,9 @@
                 <ImageView
                     android:id="@+id/imageView2a"
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/shop" />
+                    app:srcCompat="@drawable/combo" />
 
                 <TextView
                     android:id="@+id/textView4b"
@@ -180,7 +179,7 @@
 
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/manage" />
+                    app:srcCompat="@drawable/history" />
 
                 <TextView
                     android:id="@+id/textView4t"

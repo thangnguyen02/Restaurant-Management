@@ -87,7 +87,7 @@ public class ProfileActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    avatarImageView.setImageResource(R.drawable.logo);
+                    avatarImageView.setImageResource(R.drawable.avatar);
                 }
             }
         }).start();

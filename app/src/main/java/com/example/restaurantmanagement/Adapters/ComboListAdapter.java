@@ -27,7 +27,7 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboViewHolder> {
         this.listCombos = listCombos;
         this.comboClickListener = comboClickListener;
     }
-
+    
     @NonNull
     @Override
     public ComboViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

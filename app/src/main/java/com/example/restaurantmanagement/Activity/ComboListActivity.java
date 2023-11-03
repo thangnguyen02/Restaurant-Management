@@ -37,7 +37,7 @@ public class ComboListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv_Combo);
         btn_MoveToAddCombo = findViewById(R.id.btn_MoveToAddCombo);
         database = AppDatabase.getInstance(this);
-//        combos = database.comboDAO().GetAllCombo();
+        combos = database.comboDAO().GetAllCombo();
         btn_MoveToAddCombo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +52,7 @@ public class ComboListActivity extends AppCompatActivity {
     private void updateRecycler(List<Combo> combos){
         recyclerView.setHasFixedSize(true);
         comboListAdapter = new ComboListAdapter(ComboListActivity.this,combos,comboClickListener);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
         recyclerView.setAdapter(comboListAdapter);
     }
 

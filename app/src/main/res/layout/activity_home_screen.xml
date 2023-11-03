@@ -7,12 +7,13 @@
     android:background="@drawable/background_1"
     tools:context=".Activity.HomeScreenActivity">
 
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="Best food for you"
         android:textColor="@color/text_home"
         android:textSize="18dp"
@@ -20,6 +21,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@color/bg_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
@@ -57,6 +68,8 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username" />
+
+
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -192,6 +205,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/profile"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="20dp"
@@ -202,7 +216,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/profile"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -252,8 +266,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_margin="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_purple"
+        android:gravity="center"
         android:orientation="horizontal"
         android:paddingHorizontal="5dp"
         android:paddingVertical="2dp"
@@ -261,8 +277,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        android:gravity="center"
-        android:background="@drawable/background_purple"
         app:layout_constraintVertical_bias="0.0">
 
         <com.airbnb.lottie.LottieAnimationView

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class UpdatePassword extends AppCompatActivity {
 
     EditText password, confirm;
     TextView linkToProfile;
+    ImageView back;
     Button save;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,14 @@ public class UpdatePassword extends AppCompatActivity {
         confirm = findViewById(R.id.confirm);
         save = findViewById(R.id.save);
         linkToProfile = findViewById(R.id.linkToProfile);
+        back = findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UpdatePassword.this, ProfileActivity.class));
+            }
+        });
 
         linkToProfile.setOnClickListener(new View.OnClickListener() {
             @Override

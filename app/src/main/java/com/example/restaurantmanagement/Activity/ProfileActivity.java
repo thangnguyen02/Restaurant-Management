@@ -32,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView username, fullname, phone, email;
     Button edit, update;
     EditText editUsername, editPhone, editFullname;
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,14 @@ public class ProfileActivity extends AppCompatActivity {
         fullname = findViewById(R.id.fullname);
         phone = findViewById(R.id.phone);
         edit = findViewById(R.id.edit);
+        back = findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, HomeScreenActivity.class));
+            }
+        });
 
         SharedPreferences sharedPreferences = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
         String name = sharedPreferences.getString("userName", "");

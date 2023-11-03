@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="Hello friend"
                 android:textColor="@color/green"
-                android:textSize="32sp"
+                android:textSize="32dp"
                 android:textStyle="bold"/>
 
             <TextView

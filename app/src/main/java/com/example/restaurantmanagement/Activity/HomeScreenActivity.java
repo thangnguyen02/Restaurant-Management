@@ -22,8 +22,8 @@ import com.example.restaurantmanagement.R;
 public class HomeScreenActivity extends AppCompatActivity {
 
     TextView fullName;
-    ImageView profile;
-    LinearLayout logout, imageView2;
+    LinearLayout profile;
+    LinearLayout logout;
 
 
     @Override

@@ -29,7 +29,6 @@ public interface UserDao {
     @Query("SELECT * FROM users WHERE userId = :username")
     UserEntity getUserByUsername(String username);
 
-
     @Update
     void updateUser(UserEntity userEntity);
 }

@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.facebook.stetho.Stetho;
 
 import com.example.restaurantmanagement.R;
@@ -21,8 +22,8 @@ import com.example.restaurantmanagement.R;
 public class HomeScreenActivity extends AppCompatActivity {
 
     TextView fullName;
-    ImageView profile;
-    LinearLayout logout, imageView2;
+    LinearLayout profile;
+    LinearLayout logout;
 
 
     @Override
@@ -32,16 +33,17 @@ public class HomeScreenActivity extends AppCompatActivity {
         String userName = sharedPreferences.getString("userName", "");
         boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
 
-        if (!isLoggedIn || userName.isEmpty()){
+        if (!isLoggedIn || userName.isEmpty()) {
             Intent intent = new Intent(HomeScreenActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
-        }else{
+        } else {
             super.onCreate(savedInstanceState);
             Stetho.initializeWithDefaults(this);
             setContentView(R.layout.activity_home_screen);
             fullName = findViewById(R.id.username);
-            String name = "Hi "+sharedPreferences.getString("userName", "")+"✋";closeContextMenu();
+            String name = "Hi " + sharedPreferences.getString("userName", "");
+            closeContextMenu();
             fullName.setText(name);
             profile = findViewById(R.id.profile);
             logout = findViewById(R.id.logout);
@@ -76,7 +78,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putBoolean("isLoggedIn", false);
                         editor.putString("userName", "");
-                        editor.putBoolean("firstLogin_"+userName, false);
+                        editor.putBoolean("firstLogin_" + userName, false);
                         editor.apply();
 
                         Intent intent = new Intent(HomeScreenActivity.this, LoginActivity.class);

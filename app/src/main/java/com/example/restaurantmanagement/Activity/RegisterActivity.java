@@ -96,13 +96,14 @@ public class RegisterActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
                 imageBytes = stream.toByteArray();
                 userEntity.setImage(imageBytes);
 
             } catch (IOException e) {
                 StyleableToast.makeText(getApplicationContext(), "Image is invalid", Toast.LENGTH_LONG, R.style.toast_error).show();
                 e.printStackTrace();
+                return;
             }
 
 
@@ -110,13 +111,13 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     // Kiểm tra xem địa chỉ email đã tồn tại trong cơ sở dữ liệu hay chưa.
-                    int userExists = userDao.checkEmailOrUserIdExists(emailToCheck, usernameToCheck);
+                    int userExists = userDao.checkEmailExists(emailToCheck);
 
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (userExists > 0) {
-                                StyleableToast.makeText(getApplicationContext(), "Email or username already registered", Toast.LENGTH_LONG, R.style.toast_error).show();
+                                StyleableToast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_LONG, R.style.toast_error).show();
                             } else {
                                 new Thread(new Runnable() {
                                     @Override

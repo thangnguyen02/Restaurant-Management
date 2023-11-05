@@ -22,6 +22,9 @@ public interface ComboDAO {
     @Insert
     void insertCombos(Combo... combos);
 
+    @Insert
+    long insertCombo(Combo combo);
+
     @Delete
     void deleteCombos(Combo...combos);
 

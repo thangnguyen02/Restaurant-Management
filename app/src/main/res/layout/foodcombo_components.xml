@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/foodcombo_component"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
 
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="36dp"> <!-- Set a background drawable or color -->
 
@@ -14,7 +15,7 @@
         android:scaleType="centerCrop" /> <!-- Add a placeholder image or background color -->
 
     <TextView
-        android:id="@+id/nameTextView"
+        android:id="@+id/tv_foodComboName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000000"
@@ -22,14 +23,14 @@
         android:textStyle="bold" /> <!-- Customize the text color -->
 
     <TextView
-        android:id="@+id/descriptionTextView"
+        android:id="@+id/tv_foodComboDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#555555"
         android:textSize="14sp" /> <!-- Customize the text color -->
 
     <TextView
-        android:id="@+id/priceTextView"
+        android:id="@+id/tv_foodComboPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#228B22"
@@ -37,23 +38,10 @@
         android:textStyle="bold" /> <!-- Set a custom text color (green) for price -->
 
     <TextView
-        android:id="@+id/categoryTextView"
+        android:id="@+id/tv_foodComboCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:textSize="14sp" /> <!-- Customize the text color -->
 
-    <Button
-        android:id="@+id/updateButton"
-        android:layout_width="338dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:onClick="onUpdateButtonClick"
-        android:text="Update" />
-
-    <Button
-        android:id="@+id/btnDeleteFoo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
 </LinearLayout>

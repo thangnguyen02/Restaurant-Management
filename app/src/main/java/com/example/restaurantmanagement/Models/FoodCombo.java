@@ -7,42 +7,35 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "foodCombo")
 public class FoodCombo {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private Long id;
     @ColumnInfo(name = "food_id")
-    private int food_id;
+    private Long food_id;
     @ColumnInfo(name = "combo_id")
-    private int combo_id;
+    private Long combo_id;
     @ColumnInfo(name = "quantity")
     private int quantity;
 
-    public FoodCombo(int id, int food_id, int combo_id, int quantity) {
-        this.id = id;
-        this.food_id = food_id;
-        this.combo_id = combo_id;
-        this.quantity = quantity;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getFood_id() {
+    public Long getFood_id() {
         return food_id;
     }
 
-    public void setFood_id(int food_id) {
+    public void setFood_id(Long food_id) {
         this.food_id = food_id;
     }
 
-    public int getCombo_id() {
+    public Long getCombo_id() {
         return combo_id;
     }
 
-    public void setCombo_id(int combo_id) {
+    public void setCombo_id(Long combo_id) {
         this.combo_id = combo_id;
     }
 
@@ -51,6 +44,13 @@ public class FoodCombo {
     }
 
     public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public FoodCombo(Long id, Long food_id, Long combo_id, int quantity) {
+        this.id = id;
+        this.food_id = food_id;
+        this.combo_id = combo_id;
         this.quantity = quantity;
     }
 }

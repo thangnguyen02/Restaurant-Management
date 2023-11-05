@@ -59,7 +59,9 @@ public class ComboListActivity extends AppCompatActivity {
     private ComboClickListener comboClickListener = new ComboClickListener() {
         @Override
         public void onClick(Combo combo) {
-
+            Intent intent = new Intent(ComboListActivity.this,AddCombo.class);
+            intent.putExtra("combo",combo);
+            startActivity(intent);
         }
     };
 }

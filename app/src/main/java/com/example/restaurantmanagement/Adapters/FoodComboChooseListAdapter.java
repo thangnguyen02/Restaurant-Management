@@ -52,7 +52,7 @@ public class FoodComboChooseListAdapter extends RecyclerView.Adapter<FoodComboCh
     public void onBindViewHolder(@NonNull FoodComboChooseListAdapter.FoodComboChooseHolder holder, int position) {
         FoodCombo foodCombo = foodComboList.get(position);
         AppDatabase db = AppDatabase.getInstance(context);
-        Food food = db.foodDAO().findFoodById(foodCombo.getFood_id());
+        Food food = db.foodDAO().findByFoodId(foodCombo.getFood_id());
 
         Bitmap bitmaps = BitmapFactory.decodeByteArray(food.getImage(), 0, food.getImage().length);
 

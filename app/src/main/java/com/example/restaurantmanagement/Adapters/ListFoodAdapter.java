@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.restaurantmanagement.Models.Food; // Import your FoodItem class
-import com.example.restaurantmanagement.Models.FoodCategory;
 import com.example.restaurantmanagement.R;
 
 import java.util.List;
@@ -73,7 +72,7 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListFo
 
         public ListFoodViewHolder(View itemView) {
             super(itemView);
-            foodImageView = itemView.findViewById(R.id.foodImageView);
+            foodImageView = itemView.findViewById(R.id.img_foodComboImageView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
             priceTextView = itemView.findViewById(R.id.priceTextView);

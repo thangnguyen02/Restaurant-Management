@@ -17,7 +17,7 @@ import com.example.restaurantmanagement.Models.TableOrderCustomer;
 
 import org.w3c.dom.CDATASection;
 
-@Database(entities = {TableOrder.class, TableOrderCustomer.class, FoodTable.class, ComboTable.class, FoodCategory.class, Food.class, Combo.class, FoodCombo.class},version = 4)
+@Database(entities = {TableOrder.class, TableOrderCustomer.class, FoodTable.class, ComboTable.class, FoodCategory.class, Food.class, Combo.class, FoodCombo.class},version = 5)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase database;
 

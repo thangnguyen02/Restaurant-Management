@@ -26,4 +26,10 @@ public interface FoodDAO {
     void deleteFood(Food food);
     @Query("select * from Food where categoryId =:id")
     List<Food> findByFoodCategoryId(Long id );
+
+    @Query("select name from food where id = :id")
+    String findFoodNameById(Long id);
+
+    @Query("select * from food where id = :id")
+    Food findFoodById(Long id);
 }

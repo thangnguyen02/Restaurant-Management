@@ -1,18 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Actitvity.AddOrder">
+    android:visibility="visible"
+    tools:ignore="MissingDefaultResource">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="142dp"
-        android:layout_marginTop="170dp"
-        android:text="Add screen"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activity.AddOrder">
+
+        <Spinner
+            android:id="@+id/spin_TableSelection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+            android:id="@+id/tv_AddOrderName"
+            android:layout_width="375dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="Customer Name"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/spin_TableSelection" />
+
+        <Button
+            android:id="@+id/btn_addOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Add Order"
+            app:layout_constraintEnd_toStartOf="@+id/btn_deleteOrder"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_AddOrderName" />
+
+        <Button
+            android:id="@+id/btn_OrderList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order List"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_addOrder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_deleteOrder" />
+
+        <Spinner
+            android:id="@+id/spin_OrderCategory"
+            android:layout_width="166dp"
+            android:layout_height="48dp"
+            app:layout_constraintStart_toStartOf="@+id/btn_OrderList"
+            app:layout_constraintTop_toBottomOf="@+id/btn_OrderList" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_selectedItems"
+            android:layout_width="375dp"
+            android:layout_height="132dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spin_OrderCategory" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_menuItems"
+            android:layout_width="401dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_selectedItems" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_comboItems"
+            android:layout_width="401dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_menuItems" />
+
+        <Button
+            android:id="@+id/btn_deleteOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete Order"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toStartOf="@+id/btn_OrderList"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_addOrder"
+            app:layout_constraintTop_toTopOf="@+id/btn_addOrder" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

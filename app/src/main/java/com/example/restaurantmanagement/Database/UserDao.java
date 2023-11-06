@@ -22,15 +22,20 @@ public interface UserDao {
     @Query("SELECT COUNT(*) FROM users WHERE email = :email")
     int checkEmailExists(String email);
 
+    @Query("SELECT COUNT(*) FROM users WHERE email = :email OR userId = :userId")
+    int checkEmailOrUserIdExists(String email, String userId);
+
     @Query("UPDATE users SET password = :newPassword WHERE email = :email")
     void updatePassword(String email, String newPassword);
 
     @Query("SELECT * FROM users WHERE userId = :username")
     UserEntity getUserByUsername(String username);
 
-    @Query("SELECT * FROM users")
-    List<UserEntity> getAllUsers();
-
     @Update
     void updateUser(UserEntity userEntity);
+
+    @Query("SELECT COUNT(*) FROM users WHERE userId = :newUsername")
+    int checkUsernameExists(String newUsername);
+    @Query("SELECT * FROM users")
+    List<UserEntity> getAllUsers();
 }

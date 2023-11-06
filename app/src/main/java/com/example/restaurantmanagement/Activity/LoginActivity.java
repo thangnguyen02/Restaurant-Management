@@ -19,7 +19,6 @@ import com.example.restaurantmanagement.Database.UserDao;
 import com.example.restaurantmanagement.Database.UserDatabase;
 import com.example.restaurantmanagement.Models.UserEntity;
 import com.example.restaurantmanagement.R;
-import com.facebook.stetho.Stetho;
 
 import java.util.List;
 
@@ -58,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                 List<UserEntity> allUsers = userDao.getAllUsers();
 
                 for (UserEntity user : allUsers) {
-                    System.out.println("Account: " + user.getUserId() + ", isAdmin: " + user.getIsAdmin()+ "Email: "+user.getEmail() + ", Name: " + user.getFullName() + ", Phone: " + user.getPhone());
+                    System.out.println("Account: " + user.getUserId() + ", isAdmin: " + user.getIsAdmin()+ ", Email: "+user.getEmail() + ", Name: " + user.getFullName() + ", Phone: " + user.getPhone());
                 }
             }
         }).start();

@@ -25,7 +25,6 @@ import com.example.restaurantmanagement.Database.UserDatabase;
 import com.example.restaurantmanagement.Models.Food;
 import com.example.restaurantmanagement.Models.UserEntity;
 import com.example.restaurantmanagement.R;
-import com.facebook.stetho.Stetho;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -50,7 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_register);
 
         userId = findViewById(R.id.userId);
@@ -96,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 imageBytes = stream.toByteArray();
                 userEntity.setImage(imageBytes);
 

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.restaurantmanagement.Database.AppDatabase;
 import com.example.restaurantmanagement.Models.Food; // Import your FoodItem class
+import com.example.restaurantmanagement.Models.FoodCategory;
 import com.example.restaurantmanagement.R;
 
 import java.util.List;

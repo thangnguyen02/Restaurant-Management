@@ -32,4 +32,6 @@ public interface FoodDAO {
     String findFoodNameById(Long id);
     @Query("SELECT * FROM Food WHERE id = :id LIMIT 1")
     Food findByFoodId(Long id);
+
+
 }

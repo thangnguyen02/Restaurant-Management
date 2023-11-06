@@ -53,7 +53,7 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboViewHolder> {
         if (!foodCombos.isEmpty()) {
 
             for (FoodCombo fc : foodCombos) {
-                foods.add(db.foodDAO().findFoodById(fc.getFood_id()));
+                foods.add(db.foodDAO().findByFoodId(fc.getFood_id()));
             }
             holder.rv_FoodOfCombo.setHasFixedSize(true);
             FoodForComboListAdapter adapter = new FoodForComboListAdapter(context,foods);

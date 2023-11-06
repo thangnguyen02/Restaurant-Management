@@ -1,5 +1,6 @@
 package com.example.restaurantmanagement.Adapters;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -12,23 +13,29 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.restaurantmanagement.Database.AppDatabase;
 import com.example.restaurantmanagement.Models.Food; // Import your FoodItem class
 import com.example.restaurantmanagement.R;
 
 import java.util.List;
+import java.util.Locale;
 
 public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListFoodViewHolder> {
     private List<Food> foodItems;
     private OnItemClickListener listener;
+
+    private Context context;
 
     public void setListener(OnItemClickListener listener) {
         this.listener = listener;
     }
 
 
-    public void setData(List<Food> list) {
+    public void setData(List<Food> list, Context context) {
         this.foodItems = list;
+        this.context = context;
         notifyDataSetChanged();
+
     }
 
     @NonNull
@@ -46,9 +53,11 @@ public class ListFoodAdapter extends RecyclerView.Adapter<ListFoodAdapter.ListFo
         holder.nameTextView.setText(foodItem.getName());
         holder.descriptionTextView.setText(foodItem.getDescription());
         holder.priceTextView.setText(String.format("$%.2f", foodItem.getPrice()));
-        // holder.categoryTextView.setText(Math.toIntExact(foodItem.getCategoryId()));
-        // Load the image into the ImageView here using a library like Picasso or Glide.
-        // Example: Picasso.get().load(foodItem.getImageUrl()).into(holder.foodImageView);
+
+        FoodCategory x = AppDatabase.getInstance(this.context)
+                .foodCategoryDAO().findByFoodCategoryId(foodItem.getCategoryId());
+        holder.categoryTextView.setText(x.getName().toString());
+
     }
 
     @Override

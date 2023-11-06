@@ -21,6 +21,8 @@ import com.example.restaurantmanagement.Models.UserEntity;
 import com.example.restaurantmanagement.R;
 import com.facebook.stetho.Stetho;
 
+import java.util.List;
+
 import io.github.muddz.styleabletoast.StyleableToast;
 
 public class LoginActivity extends AppCompatActivity {
@@ -40,7 +42,6 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
         super.onCreate(savedInstanceState);
-        Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_login);
 
         userId = findViewById(R.id.userId);
@@ -48,6 +49,19 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.login);
         linkToRegister = findViewById(R.id.linkToRegister);
         reset = findViewById(R.id.reset);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
+                UserDao userDao = userDatabase.userDao();
+                List<UserEntity> allUsers = userDao.getAllUsers();
+
+                for (UserEntity user : allUsers) {
+                    System.out.println("Account: " + user.getUserId() + ", isAdmin: " + user.getIsAdmin()+ "Email: "+user.getEmail() + ", Name: " + user.getFullName() + ", Phone: " + user.getPhone());
+                }
+            }
+        }).start();
 
         linkToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                     UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
                     final UserDao userDao = userDatabase.userDao();
                     new Thread(new Runnable() {
+
                         @Override
                         public void run() {
                             UserEntity userEntity = userDao.login(userIdText, passwordText);

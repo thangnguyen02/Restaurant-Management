@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
+    android:background="@drawable/solid_border"
     android:orientation="vertical"
     android:padding="36dp"> <!-- Set a background drawable or color -->
 

@@ -20,7 +20,8 @@ public interface TableOrderDAO {
 
     @Query("SELECT * FROM tableOrder WHERE ID = :id")
     TableOrder findById(int id);
-
+    @Query("SELECT * FROM tableOrder WHERE ID = :floor")
+    TableOrder findByFloor(int floor);
     @Insert
     void insertAll(TableOrder... tableOrder);
 

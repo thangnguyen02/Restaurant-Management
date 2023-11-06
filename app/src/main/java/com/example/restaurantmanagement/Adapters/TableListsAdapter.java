@@ -10,23 +10,23 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.restaurantmanagement.Database.AppDatabase;
 import com.example.restaurantmanagement.EventListener.TableOrderClickListener;
 import com.example.restaurantmanagement.Models.TableOrder;
-import com.example.restaurantmanagement.Models.TableOrderCustomer;
 import com.example.restaurantmanagement.R;
 
 import java.util.List;
 
-public class TableListAdapter extends RecyclerView.Adapter<TableViewHolder> {
-    Context context;
-    List<TableOrder> listTableOrder;
-    TableOrderClickListener listener;
-    public TableListAdapter(Context context, List<TableOrder> listTableOrder, TableOrderClickListener listener) {
+public class TableListsAdapter extends RecyclerView.Adapter<TableViewHolder> {
+   Context context;
+   List<TableOrder> tableOrders;
+   TableOrderClickListener tableOrderClickListener;
+
+    public TableListsAdapter(Context context, List<TableOrder> tableOrders, TableOrderClickListener tableOrderClickListener) {
         this.context = context;
-        this.listTableOrder = listTableOrder;
-        this.listener = listener;
+        this.tableOrders = tableOrders;
+        this.tableOrderClickListener = tableOrderClickListener;
     }
+
     @NonNull
     @Override
     public TableViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,31 +35,25 @@ public class TableListAdapter extends RecyclerView.Adapter<TableViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TableViewHolder holder, int position) {
-        int status = 1;
-        TableOrderCustomer busy = AppDatabase.getInstance(
-                context
-        ).tableOrderCustomerDAO().findByTableOrder(listTableOrder.get(position).getID());
-        holder.text_table.setText(listTableOrder.get(position).getDescription());
-
-        holder.text_number.setText("Number: "+listTableOrder.get(position).getNumber());
+        holder.text_table.setText(tableOrders.get(position).getDescription());
+        holder.text_number.setText("Number: "+tableOrders.get(position).getNumber());
         holder.text_status.setText("Free");
+
         holder.table_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(listTableOrder.get(holder.getAdapterPosition()));
+                tableOrderClickListener.onClick(tableOrders.get(holder.getAdapterPosition()));
             }
         });
     }
 
-
-
     @Override
     public int getItemCount() {
-        return listTableOrder.size();
+        return tableOrders.size();
     }
 }
 class TableViewHolder extends RecyclerView.ViewHolder {
-    CardView table_container;
+        CardView table_container;
     TextView text_table,text_number,text_status;
     public TableViewHolder(@NonNull View itemView) {
         super(itemView);

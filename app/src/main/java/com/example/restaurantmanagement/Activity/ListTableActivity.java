@@ -8,13 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.restaurantmanagement.Adapters.OrderListAdapter;
-import com.example.restaurantmanagement.Adapters.TableListAdapter;
+
+import com.example.restaurantmanagement.Adapters.TableListsAdapter;
 import com.example.restaurantmanagement.Database.AppDatabase;
 import com.example.restaurantmanagement.EventListener.TableOrderClickListener;
-import com.example.restaurantmanagement.MainActivity;
 import com.example.restaurantmanagement.Models.TableOrder;
-import com.example.restaurantmanagement.Models.TableOrderCustomer;
 import com.example.restaurantmanagement.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -26,14 +24,14 @@ public class ListTableActivity extends AppCompatActivity {
     ImageView back;
     List<TableOrder> tables = new ArrayList<>();
     RecyclerView recyclerView;
-    TableListAdapter tableListAdapter;
+    TableListsAdapter tableListAdapter;
     FloatingActionButton f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_table);
         database = AppDatabase.getInstance(this);
-        tables = database.tableOrderDAO().getAll();
+         tables = database.tableOrderDAO().getAll();
         recyclerView = findViewById(R.id.recycler_table);
         back = findViewById(R.id.back);
         f = findViewById(R.id.f_add);
@@ -57,7 +55,7 @@ public class ListTableActivity extends AppCompatActivity {
 
     private void updateRecycler(List<TableOrder> tables) {
         recyclerView.setHasFixedSize(true);
-        tableListAdapter = new TableListAdapter(ListTableActivity.this,tables,tableOrderClickListener);
+        tableListAdapter = new TableListsAdapter(ListTableActivity.this,tables,tableOrderClickListener);
         recyclerView.setAdapter(tableListAdapter);
     }
 

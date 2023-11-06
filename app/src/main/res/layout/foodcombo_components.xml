@@ -29,13 +29,7 @@
         android:textColor="#555555"
         android:textSize="14sp" /> <!-- Customize the text color -->
 
-    <TextView
-        android:id="@+id/tv_foodComboPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#228B22"
-        android:textSize="16sp"
-        android:textStyle="bold" /> <!-- Set a custom text color (green) for price -->
+    <!-- Set a custom text color (green) for price -->
 
     <TextView
         android:id="@+id/tv_foodComboCategory"

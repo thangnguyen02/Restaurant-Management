@@ -166,7 +166,7 @@ public class AddCombo extends AppCompatActivity implements FoodComboChooseListAd
 
     private void updateFoodComboRecycler(List<FoodCombo> foodCombos) {
         rv_choosenFood.setHasFixedSize(true);
-        foodComboChooseListAdapter = new FoodComboChooseListAdapter(AddCombo.this, foodCombos);
+        foodComboChooseListAdapter = new FoodComboChooseListAdapter(AddCombo.this, foodCombos,true);
         foodComboChooseListAdapter.setListener(this);
         rv_choosenFood.setLayoutManager(new LinearLayoutManager(this));
         rv_choosenFood.setAdapter(foodComboChooseListAdapter);

@@ -32,6 +32,12 @@ public class FoodForComboListAdapter extends RecyclerView.Adapter<FoodForComboVi
         this.foodComboClickListener = foodComboClickListener;
     }
 
+
+    public FoodForComboListAdapter(Context context, List<Food> foods) {
+        this.context = context;
+        this.foods = foods;
+    }
+
     @NonNull
     @Override
     public FoodForComboViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -47,14 +53,16 @@ public class FoodForComboListAdapter extends RecyclerView.Adapter<FoodForComboVi
         holder.tv_foodComboDesc.setText(food.getDescription());
         holder.tv_foodComboCategory.setText(foodCategory.getName());
         holder.tv_foodComboName.setText(food.getName());
-        holder.tv_foodComboPrice.setText(String.valueOf(food.getPrice()));
         holder.img_foodComboImageView.setImageBitmap(bitmaps);
-        holder.foodcombo_component.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                foodComboClickListener.onClick(foods.get(holder.getAdapterPosition()));
-            }
-        });
+        if(foodComboClickListener != null){
+            holder.foodcombo_component.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    foodComboClickListener.onClick(foods.get(holder.getAdapterPosition()));
+                }
+            });
+        }
+
     }
 
     @Override
@@ -65,13 +73,12 @@ public class FoodForComboListAdapter extends RecyclerView.Adapter<FoodForComboVi
 class  FoodForComboViewHolder extends RecyclerView.ViewHolder{
     LinearLayout foodcombo_component;
     ImageView img_foodComboImageView;
-    TextView tv_foodComboName,tv_foodComboDesc,tv_foodComboPrice,tv_foodComboCategory;
+    TextView tv_foodComboName,tv_foodComboDesc,tv_foodComboCategory;
 
     public FoodForComboViewHolder(@NonNull View itemView) {
         super(itemView);
         foodcombo_component = itemView.findViewById(R.id.foodcombo_component);
         img_foodComboImageView = itemView.findViewById(R.id.img_foodComboImageView);
-        tv_foodComboPrice = itemView.findViewById(R.id.tv_foodComboPrice);
         tv_foodComboDesc = itemView.findViewById(R.id.tv_foodComboDesc);
         tv_foodComboName = itemView.findViewById(R.id.tv_foodComboName);
         tv_foodComboCategory = itemView.findViewById(R.id.tv_foodComboCategory);

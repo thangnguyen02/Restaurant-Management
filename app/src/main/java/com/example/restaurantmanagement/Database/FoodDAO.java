@@ -29,4 +29,7 @@ public interface FoodDAO {
 
     @Query("select name from food where id = :id")
     String findFoodNameById(Long id);
+
+    @Query("select * from food where id = :id")
+    Food findFoodById(Long id);
 }

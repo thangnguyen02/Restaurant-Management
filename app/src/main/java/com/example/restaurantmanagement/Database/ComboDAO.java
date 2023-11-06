@@ -19,6 +19,8 @@ public interface ComboDAO {
     @Query("SELECT * FROM combo WHERE ID = :id")
     Combo GetComboById(int id);
 
+    @Query("SELECT * FROM combo WHERE name LIKE :name")
+    List<Combo> findComboByName(String name);
     @Insert
     void insertCombos(Combo... combos);
 

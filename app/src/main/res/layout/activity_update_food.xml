@@ -1,59 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<!-- res/layout/add_food_layout.xml -->
 
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="36dp"> <!-- Set a background drawable or color -->
+    android:padding="16dp"
+    tools:ignore="ExtraText">
+
+
 
     <ImageView
-        android:id="@+id/foodImageView"
+        android:id="@+id/foodImageViewUpdate"
         android:layout_width="match_parent"
         android:layout_height="200dp"
 
         android:scaleType="centerCrop" /> <!-- Add a placeholder image or background color -->
-
-    <TextView
-        android:id="@+id/nameTextView"
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:onClick="selectImage"
+        android:text="Select Image" />
+    <EditText
+        android:id="@+id/nameTextViewUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold" /> <!-- Customize the text color -->
 
-    <TextView
-        android:id="@+id/descriptionTextView"
+    <EditText
+        android:id="@+id/descriptionTextViewUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#555555"
         android:textSize="14sp" /> <!-- Customize the text color -->
 
-    <TextView
-        android:id="@+id/priceTextView"
+    <EditText
+        android:id="@+id/priceTextViewUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#228B22"
         android:textSize="16sp"
         android:textStyle="bold" /> <!-- Set a custom text color (green) for price -->
 
-    <TextView
-        android:id="@+id/categoryTextView"
+    <Spinner
+        android:id="@+id/categoryTextViewUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:textSize="14sp" /> <!-- Customize the text color -->
 
     <Button
-        android:id="@+id/updateButton"
-        android:layout_width="338dp"
+        android:id="@+id/updateButtonss"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
-        android:onClick="onUpdateButtonClick"
+        android:onClick="onUpdateButtonClickUpdate"
         android:text="Update" />
 
-    <Button
-        android:id="@+id/btnDeleteFoo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete" />
+
 </LinearLayout>

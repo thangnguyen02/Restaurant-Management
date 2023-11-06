@@ -3,8 +3,10 @@ package com.example.restaurantmanagement.Models;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import kotlin.jvm.Transient;
+
 @Entity(tableName = "Food")
-public class Food {
+public class Food    {
     @PrimaryKey(autoGenerate = true)
     private Long id;
     private String name;

@@ -1,5 +1,6 @@
 package com.example.restaurantmanagement.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -43,7 +44,7 @@ public class ListFoodActivity extends AppCompatActivity implements ListFoodAdapt
     private void reload() {
         List<Food> foodItems = AppDatabase.getInstance(this).foodDAO().getListFood();
         listFoodAdapter = new ListFoodAdapter();
-        listFoodAdapter.setData(foodItems);
+        listFoodAdapter.setData(foodItems, this);
         listFoodAdapter.setListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listFoodAdapter);
@@ -58,6 +59,9 @@ public class ListFoodActivity extends AppCompatActivity implements ListFoodAdapt
 
     @Override
     public void UpdateItem(Food food) {
+        Intent intent = new Intent(this, UpdateFoodActivity.class);
 
+        intent.putExtra("food", food.getId());
+        startActivity(intent);
     }
 }

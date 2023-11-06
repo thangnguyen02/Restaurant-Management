@@ -3,6 +3,7 @@ package com.example.restaurantmanagement.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,6 +12,7 @@ import com.example.restaurantmanagement.Adapters.OrderListAdapter;
 import com.example.restaurantmanagement.Adapters.TableListAdapter;
 import com.example.restaurantmanagement.Database.AppDatabase;
 import com.example.restaurantmanagement.EventListener.TableOrderClickListener;
+import com.example.restaurantmanagement.MainActivity;
 import com.example.restaurantmanagement.Models.TableOrder;
 import com.example.restaurantmanagement.Models.TableOrderCustomer;
 import com.example.restaurantmanagement.R;
@@ -33,12 +35,21 @@ public class ListTableActivity extends AppCompatActivity {
         database = AppDatabase.getInstance(this);
         tables = database.tableOrderDAO().getAll();
         recyclerView = findViewById(R.id.recycler_table);
+        back = findViewById(R.id.back);
         f = findViewById(R.id.f_add);
         updateRecycler(tables);
         f.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(ListTableActivity.this, AddTable.class);
+                startActivity(intent);
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListTableActivity.this, HomeScreenActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -28,7 +28,7 @@ public class ListFoodActivity extends AppCompatActivity implements ListFoodAdapt
     RecyclerView recyclerView;
     ListFoodAdapter listFoodAdapter;
     private Spinner spinner;
-    private static int indexCate = -1;
+    private static int indexCate ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,6 @@ public class ListFoodActivity extends AppCompatActivity implements ListFoodAdapt
                 // Handle the case where nothing is selected (optional)
             }
         });
-        indexCate=-1;
         reload();
 
     }
@@ -69,12 +68,12 @@ public class ListFoodActivity extends AppCompatActivity implements ListFoodAdapt
     public void onItemClick(Food food) {
 
     }
-
+    int check = 0;
     private void reload() {
         List<Food> foodItems;
-        if (indexCate != -1) {
+        if (indexCate != 0 && check ==0) {
+            check++;
             List<FoodCategory> foodCategoryList = AppDatabase.getInstance(this).foodCategoryDAO().getListFoodCategory();
-
             foodItems = AppDatabase.getInstance(this).foodDAO().findByFoodCategoryId(foodCategoryList.get(indexCate).getId());
         } else {
             foodItems = AppDatabase.getInstance(this).foodDAO().getListFood();

@@ -6,16 +6,18 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.restaurantmanagement.Models.Combo;
 import com.example.restaurantmanagement.Models.ComboTable;
 import com.example.restaurantmanagement.Models.Food;
 import com.example.restaurantmanagement.Models.FoodCategory;
+import com.example.restaurantmanagement.Models.FoodCombo;
 import com.example.restaurantmanagement.Models.FoodTable;
 import com.example.restaurantmanagement.Models.TableOrder;
 import com.example.restaurantmanagement.Models.TableOrderCustomer;
 
 import org.w3c.dom.CDATASection;
 
-@Database(entities = {TableOrder.class, TableOrderCustomer.class, FoodTable.class, ComboTable.class, FoodCategory.class, Food.class},version = 4)
+@Database(entities = {TableOrder.class, TableOrderCustomer.class, FoodTable.class, ComboTable.class, FoodCategory.class, Food.class, Combo.class, FoodCombo.class},version = 5)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase database;
 
@@ -36,4 +38,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public  abstract  ComboTableDAO comboTableDAO();
     public abstract FoodCategoryDAO foodCategoryDAO();
     public abstract FoodDAO foodDAO();
+    public abstract ComboDAO comboDAO();
+    public abstract FoodComboDAO foodComboDAO();
 }

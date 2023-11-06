@@ -8,12 +8,17 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.restaurantmanagement.Database.AppDatabase;
 import com.example.restaurantmanagement.EventListener.ComboClickListener;
 import com.example.restaurantmanagement.Models.Combo;
+import com.example.restaurantmanagement.Models.Food;
+import com.example.restaurantmanagement.Models.FoodCombo;
 import com.example.restaurantmanagement.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ComboListAdapter extends RecyclerView.Adapter<ComboViewHolder> {
@@ -31,7 +36,7 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboViewHolder> {
     @NonNull
     @Override
     public ComboViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ComboViewHolder(LayoutInflater.from(context).inflate(R.layout.combo_components,parent,false));
+        return new ComboViewHolder(LayoutInflater.from(context).inflate(R.layout.combo_components, parent, false));
     }
 
     @Override
@@ -41,6 +46,22 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboViewHolder> {
         holder.tv_ComboPrice.setText(String.valueOf(combo.getPrice()));
         holder.tv_ComboName.setText(combo.getName());
         holder.tv_ComboDescription.setText(combo.getDescription());
+
+        AppDatabase db = AppDatabase.getInstance(context);
+        List<FoodCombo> foodCombos = db.foodComboDAO().getFoodCombosByComboId(combo.getID());
+        List<Food> foods = new ArrayList<>();
+        if (!foodCombos.isEmpty()) {
+
+            for (FoodCombo fc : foodCombos) {
+                foods.add(db.foodDAO().findFoodById(fc.getFood_id()));
+            }
+            holder.rv_FoodOfCombo.setHasFixedSize(true);
+            FoodForComboListAdapter adapter = new FoodForComboListAdapter(context,foods);
+            holder.rv_FoodOfCombo.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
+            holder.rv_FoodOfCombo.setAdapter(adapter);
+        }
+
+
         holder.combo_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,9 +78,10 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboViewHolder> {
     }
 }
 
-class ComboViewHolder extends RecyclerView.ViewHolder{
+class ComboViewHolder extends RecyclerView.ViewHolder {
     CardView combo_container;
     TextView tv_ComboName, tv_ComboDescription, tv_ComboPrice;
+    RecyclerView rv_FoodOfCombo;
 
 
     public ComboViewHolder(@NonNull View itemView) {
@@ -68,5 +90,6 @@ class ComboViewHolder extends RecyclerView.ViewHolder{
         tv_ComboDescription = itemView.findViewById(R.id.tv_ComboDescription);
         tv_ComboName = itemView.findViewById(R.id.tv_ComboName);
         tv_ComboPrice = itemView.findViewById(R.id.tv_ComboPrice);
+        rv_FoodOfCombo = itemView.findViewById(R.id.rv_FoodOfCombo);
     }
 }

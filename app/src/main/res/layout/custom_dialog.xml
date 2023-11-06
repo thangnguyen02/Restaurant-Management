@@ -10,10 +10,10 @@
         android:id="@+id/dialog_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Are you sure want to logout?"
-        android:textSize="20sp"
         android:layout_marginBottom="25dp"
-        android:textColor="#000" />
+        android:text="Are you sure want to logout?"
+        android:textColor="#000"
+        android:textSize="20sp" />
 
 
     <!-- Dòng chứa nút "Yes" và "No" -->
@@ -21,33 +21,33 @@
         android:layout_width="match_parent"
 
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
 
         <!-- Nút "Yes" -->
         <Button
             android:id="@+id/dialog_button_yes"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Yes"
+            android:layout_gravity="center"
             android:layout_marginRight="50dp"
-            android:textSize="16sp"
-            android:textColor="#fff"
+            android:layout_weight="1"
             android:backgroundTint="#02D15F"
-            android:layout_gravity="center" />
+            android:text="Yes"
+            android:textColor="#fff"
+            android:textSize="16sp" />
 
         <!-- Nút "No" -->
         <Button
             android:id="@+id/dialog_button_no"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="No"
-            android:textSize="16sp"
-            android:textColor="#fff"
             android:backgroundTint="#FF0000"
-            android:layout_gravity="center" />
+            android:text="No"
+            android:textColor="#fff"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

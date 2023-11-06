@@ -22,12 +22,13 @@
             android:paddingTop="10dp"
             android:paddingEnd="10dp"
             android:text="Combo name"
+            android:textAlignment="center"
             android:textSize="28sp" />
 
         <TextView
             android:id="@+id/tv_ComboDescription"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="78dp"
             android:layout_weight="1"
             android:paddingStart="20dp"
             android:paddingEnd="10dp"
@@ -37,12 +38,19 @@
         <TextView
             android:id="@+id/tv_ComboPrice"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:paddingStart="30dp"
             android:paddingEnd="10dp"
             android:text="Price"
+            android:textColor="#0BEA14"
             android:textSize="16sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_FoodOfCombo"
+            android:layout_width="match_parent"
+            android:layout_height="388dp"
+            android:layout_weight="1" />
 
     </LinearLayout>
 

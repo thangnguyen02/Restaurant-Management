@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Actitvity.ComboListActivity">
+    tools:context=".Activity.ComboListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_Combo"
-        android:layout_width="341dp"
-        android:layout_height="626dp"
+        android:layout_width="333dp"
+        android:layout_height="540dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,9 +19,31 @@
         android:id="@+id/btn_MoveToAddCombo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="Add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/rv_Combo"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_searchComboName"
+        android:layout_width="209dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="40dp"
+        android:ems="10"
+        android:hint="Search combo"
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/btn_MoveToAddCombo"
+        app:layout_constraintStart_toStartOf="@+id/rv_Combo"
+        app:layout_constraintTop_toTopOf="@+id/btn_MoveToAddCombo" />
+
+    <Button
+        android:id="@+id/btn_MoveToHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

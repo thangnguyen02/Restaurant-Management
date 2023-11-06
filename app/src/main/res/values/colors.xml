@@ -12,7 +12,7 @@
     <color name="menu">#350864</color>
     <color name="text_home">#086544</color>
     <color name="pink">#EA7773</color>
-
+    <color name="bg_button">#29C1B3</color>
     <!-- colors for button style -->
 
     <color name="gradient_start_color">#4c84ff</color>

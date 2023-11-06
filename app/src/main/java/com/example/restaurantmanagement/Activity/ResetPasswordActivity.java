@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     EditText userId, email, newPassword, confirmPassword;
     Button updatePassword;
     TextView linkToLogin;
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,14 @@ public class ResetPasswordActivity extends AppCompatActivity {
         confirmPassword = findViewById(R.id.confirm);
         updatePassword = findViewById(R.id.save);
         linkToLogin = findViewById(R.id.linkToLogin);
+        back = findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ResetPasswordActivity.this, LoginActivity.class));
+            }
+        });
 
         linkToLogin.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -19,7 +19,7 @@ public class SlideActivity extends AppCompatActivity {
 
     ViewPager mSLideViewPager;
     LinearLayout mDotLayout;
-    Button backbtn, nextbtn, skipbtn;
+    Button backbtn, nextbtn;
 
     TextView[] dots;
     ViewPagerAdapter viewPagerAdapter;
@@ -31,7 +31,6 @@ public class SlideActivity extends AppCompatActivity {
 
         backbtn = findViewById(R.id.backbtn);
         nextbtn = findViewById(R.id.nextbtn);
-        skipbtn = findViewById(R.id.skipButton);
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,17 +62,6 @@ public class SlideActivity extends AppCompatActivity {
             }
         });
 
-        skipbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                Intent i = new Intent(SlideActivity.this,HomeScreenActivity.class);
-                startActivity(i);
-                finish();
-
-            }
-        });
 
         mSLideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
         mDotLayout = (LinearLayout) findViewById(R.id.indicator_layout);

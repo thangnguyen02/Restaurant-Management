@@ -17,6 +17,8 @@ public interface FoodCategoryDAO {
 
     @Query("SELECT name FROM FOODCATEGORY")
     List<String> getListFoodCategoryName();
+
+
     @Insert
     void insertFoodCategory(FoodCategory foodCategory);
 
@@ -26,5 +28,9 @@ public interface FoodCategoryDAO {
     @Delete
     void deleteFoodCategory(FoodCategory foodCategory);
     @Query("select * from FoodCategory where id =:id")
-    FoodCategory findByFoodCategoryId(Long id );
+    FoodCategory findByFoodCategoryId(Long id);
+
+    @Query("select id from FoodCategory where name = :name")
+    Long findCategoryIdByName(String name);
+
 }

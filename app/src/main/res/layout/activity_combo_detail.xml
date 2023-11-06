@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.ComboDetailActivity">
+
+    <TextView
+        android:id="@+id/tv_ComboDetailName"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_ComboDetailDescription"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="DESC"
+        android:textAlignment="viewStart"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_ComboDetailName"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ComboDetailName" />
+
+    <TextView
+        android:id="@+id/tv_ComboDetailPrice"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Price"
+        android:textAlignment="viewStart"
+        android:textColor="#4CAF50"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_ComboDetailDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ComboDetailDescription" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_ComboDetailFood"
+        android:layout_width="332dp"
+        android:layout_height="455dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_ComboDetailPrice"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_ComboDetailPrice"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ComboDetailPrice" />
+
+    <Button
+        android:id="@+id/btn_ComboDetailBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="List"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,7 @@ import com.example.restaurantmanagement.R;
 public class HomeScreenActivity extends AppCompatActivity {
 
     TextView fullName;
+    LinearLayout combo;
     LinearLayout profile;
     LinearLayout logout;
 
@@ -45,10 +46,19 @@ public class HomeScreenActivity extends AppCompatActivity {
             String name = "Hi " + sharedPreferences.getString("userName", "");
             closeContextMenu();
             fullName.setText(name);
+            combo = findViewById(R.id.combo);
             profile = findViewById(R.id.profile);
             logout = findViewById(R.id.logout);
         }
 
+        combo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreenActivity.this, ComboListActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

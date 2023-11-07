@@ -25,7 +25,6 @@ import com.example.restaurantmanagement.Database.UserDatabase;
 import com.example.restaurantmanagement.Models.Food;
 import com.example.restaurantmanagement.Models.UserEntity;
 import com.example.restaurantmanagement.R;
-import com.facebook.stetho.Stetho;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -50,7 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_register);
 
         userId = findViewById(R.id.userId);
@@ -96,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 imageBytes = stream.toByteArray();
                 userEntity.setImage(imageBytes);
 
@@ -111,13 +109,13 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     // Kiểm tra xem địa chỉ email đã tồn tại trong cơ sở dữ liệu hay chưa.
-                    int userExists = userDao.checkEmailExists(emailToCheck);
+                    int userExists = userDao.checkEmailOrUserIdExists(emailToCheck, usernameToCheck);
 
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (userExists > 0) {
-                                StyleableToast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_LONG, R.style.toast_error).show();
+                                StyleableToast.makeText(getApplicationContext(), "Email or username already registered", Toast.LENGTH_LONG, R.style.toast_error).show();
                             } else {
                                 new Thread(new Runnable() {
                                     @Override

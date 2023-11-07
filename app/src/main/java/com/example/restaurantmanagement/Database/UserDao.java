@@ -8,6 +8,8 @@ import androidx.room.Update;
 
 import com.example.restaurantmanagement.Models.UserEntity;
 
+import java.util.List;
+
 @Dao
 public interface UserDao {
 
@@ -31,4 +33,9 @@ public interface UserDao {
 
     @Update
     void updateUser(UserEntity userEntity);
+
+    @Query("SELECT COUNT(*) FROM users WHERE userId = :newUsername")
+    int checkUsernameExists(String newUsername);
+    @Query("SELECT * FROM users")
+    List<UserEntity> getAllUsers();
 }

@@ -23,7 +23,7 @@ public class HomeScreenActivity extends AppCompatActivity {
     TextView fullName;
     LinearLayout combo;
     LinearLayout profile;
-    LinearLayout logout;
+    LinearLayout logout, ordernow, table,food;
 
 
     @Override
@@ -47,8 +47,34 @@ public class HomeScreenActivity extends AppCompatActivity {
             combo = findViewById(R.id.combo);
             profile = findViewById(R.id.profile);
             logout = findViewById(R.id.logout);
+            table = findViewById(R.id.table);
+            ordernow = findViewById(R.id.ordernow);
+            food = findViewById(R.id.food);
         }
-
+        food.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreenActivity.this, ListFoodActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        ordernow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreenActivity.this, AddOrder.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        table.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreenActivity.this, ListTableActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         combo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

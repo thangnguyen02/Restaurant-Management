@@ -20,7 +20,8 @@ public interface TableOrderCustomerDAO {
 
     @Query("SELECT * FROM tableOrderCustomer WHERE ID = :id")
     TableOrderCustomer findById(int id);
-
+    @Query("SELECT * FROM tableOrderCustomer WHERE table_order_id = :id")
+    TableOrderCustomer findByTableOrder(int id);
     @Insert
     void insertAll(TableOrderCustomer... tableOrderCustomer);
 

@@ -15,7 +15,12 @@ public class TableOrder {
     @ColumnInfo(name = "number")
     int number;
 
-
+    public TableOrder(int ID, int floor, int number, String description) {
+        this.ID = ID;
+        this.floor = floor;
+        this.description = description;
+        this.number = number;
+    }
     public int getID() {
         return ID;
     }

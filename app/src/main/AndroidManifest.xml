@@ -15,6 +15,17 @@
         android:theme="@style/Theme.RestaurantManagement"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.ListOrder"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.AddTable"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ListTableActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
             android:name=".Activity.ComboDetailActivity"
             android:exported="false" />
         <activity
@@ -55,15 +66,13 @@
             android:exported="false" />
         <activity
             android:name=".Activity.FoodActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Activity.ListFoodActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Activity.UpdateFoodActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Activity.Admin"
             android:exported="true" >

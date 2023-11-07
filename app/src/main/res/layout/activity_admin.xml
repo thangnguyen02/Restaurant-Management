@@ -1,0 +1,30 @@
+<!-- res/layout/add_food_layout.xml -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:ignore="ExtraText">
+
+    <Button
+        android:id="@+id/buttonAddFood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Food" />
+
+    <Button
+        android:id="@+id/buttonlistFood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="List Food" />
+
+    <Button
+        android:id="@+id/buttonListCate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Category" />
+
+</LinearLayout>

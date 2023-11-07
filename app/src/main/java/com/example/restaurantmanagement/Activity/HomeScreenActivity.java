@@ -24,7 +24,7 @@ public class HomeScreenActivity extends AppCompatActivity {
     TextView fullName;
     LinearLayout combo;
     LinearLayout profile;
-    LinearLayout logout, ordernow, table;
+    LinearLayout logout, ordernow, table,food;
 
 
     @Override
@@ -51,8 +51,16 @@ public class HomeScreenActivity extends AppCompatActivity {
             logout = findViewById(R.id.logout);
             table = findViewById(R.id.table);
             ordernow = findViewById(R.id.ordernow);
-
+            food = findViewById(R.id.food);
         }
+        food.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeScreenActivity.this, ListFoodActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         ordernow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

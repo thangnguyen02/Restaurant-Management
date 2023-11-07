@@ -14,6 +14,8 @@ public class Admin extends AppCompatActivity {
     Button listFood;
 
     Button listCate;
+    Button listCombo;
+    Button addTable;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,8 @@ public class Admin extends AppCompatActivity {
         listFood = findViewById(R.id.buttonlistFood);
         addFood = findViewById(R.id.buttonAddFood);
         listCate = findViewById(R.id.buttonListCate);
+        listCombo = findViewById(R.id.buttonListCombo);
+        addTable = findViewById(R.id.buttonAddTable);
         listCate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,6 +41,19 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Admin.this, ListFoodActivity.class));
+            }
+        });
+
+        listCombo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Admin.this, ComboListActivity.class));
+            }
+        });
+        addTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Admin.this, AddTable.class));
             }
         });
 

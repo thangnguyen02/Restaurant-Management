@@ -110,18 +110,25 @@ public class LoginActivity extends AppCompatActivity {
                                         StyleableToast.makeText(getApplicationContext(), "Login successfully", Toast.LENGTH_LONG, R.style.toast_successfully).show();
                                     }
                                 });
+                                if(userEntity.getIsAdmin()==1){
 
-                                if (isFirstLogin) {
-                                    editor.putBoolean("isFirstLogin", true);
+                                    startActivity(new Intent(LoginActivity.this, Admin.class));
                                     editor.putString("userName", userIdText);
-                                    editor.apply();
-                                    startActivity(new Intent(LoginActivity.this, SlideActivity.class));
-                                } else {
-                                    editor.putBoolean("isFirstLogin", false);
-                                    editor.putString("userName", userIdText);
-                                    editor.apply();
-                                    startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));
+                                }else{
+                                    if (isFirstLogin) {
+                                        editor.putBoolean("isFirstLogin", true);
+                                        editor.putString("userName", userIdText);
+                                        editor.apply();
+                                        startActivity(new Intent(LoginActivity.this, SlideActivity.class));
+                                    } else {
+                                        editor.putBoolean("isFirstLogin", false);
+                                        editor.putString("userName", userIdText);
+                                        editor.apply();
+                                        startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));
+                                    }
                                 }
+
+
 
                                 finish();
                             }

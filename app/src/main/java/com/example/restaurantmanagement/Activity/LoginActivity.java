@@ -114,6 +114,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     startActivity(new Intent(LoginActivity.this, Admin.class));
                                     editor.putString("userName", userIdText);
+                                    editor.apply();
                                 }else{
                                     if (isFirstLogin) {
                                         editor.putBoolean("isFirstLogin", true);
